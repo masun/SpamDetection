@@ -10,7 +10,7 @@ class TweetFeatureExtractor :
     def __init__(self, tweet_id):
         self.tweet_id = tweet_id
         self.tweetFeatureCount = dict()
-        self.tweetFeatureCount["hastags"] = 0
+        self.tweetFeatureCount["hashtags"] = 0
         self.tweetFeatureCount["mentions"] = 0
         self.tweetFeatureCount["uppercase"] = 0
         self.tweetFeatureCount["nonalpha"] = 0
@@ -29,20 +29,24 @@ class TweetFeatureExtractor :
     
     def urlFeature(self, tweet) :
         self.tweetFeatureCount["urls"] = \
-            len(re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', tweet))
+            len(re.findall(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', tweet))
+    
+    def numbersFeature(self, tweet) :
+        self.tweetFeatureCount["numbers"] = \
+            len(re.findall(r'\s[0-9]+\s', tweet))
+        
     
     def extractFeatures(self, tweetText) :
         self.lenFeature(tweetText)
         self.urlFeature(tweetText)
-        for word in tweet.split(" ") :
+        self.numbersFeature(tweetText)
+        for word in tweetText.split(" ") :
             if word.startswith("@") :
                 self.addFeature("mentions")
             elif word.startswith("#") :
                 self.addFeature("hashtags")
             elif not word.isalpha() :
                 self.addFeature("nonalpha")
-            elif word.isdigit() :
-                self.addFeature("numbers")
             elif word.isupper() :
                 self.addFeature("uppercase")
             
@@ -53,7 +57,7 @@ class tweetsFeatureExtractor :
     
     def __init__(self) :
         self.tweetsFeatureCount = dict()
-        self.tweetsFeatureCount["hastags"] = 0
+        self.tweetsFeatureCount["hashtags"] = 0
         self.tweetsFeatureCount["mentions"] = 0
         self.tweetsFeatureCount["uppercase"] = 0
         self.tweetsFeatureCount["nonalpha"] = 0
@@ -72,7 +76,7 @@ class tweetsFeatureExtractor :
         for tweet in tweets :
             self.tweetCount += 1
             featureExtractor = TweetFeatureExtractor(tweet.tweet_id)
-            featureExtractor.extracFeatures(tweet.text)
+            featureExtractor.extractFeatures(tweet.text)
             self.addFeatures(featureExtractor)
         
     
@@ -124,8 +128,55 @@ class TweetsBank :
                     itertools.chain([tweet], self.tweetGenerator)
                 break
         
+    
+    """
+        self.tweetFeatureCount["hastags"] = 0
+        self.tweetFeatureCount["mentions"] = 0
+        self.tweetFeatureCount["uppercase"] = 0
+        self.tweetFeatureCount["nonalpha"] = 0
+        self.tweetFeatureCount["urls"] = 0
+        self.tweetFeatureCount["len"] = 0
+        self.tweetFeatureCount["numbers"] = 0
+    """
+    
+    def saveTweets(self, filename) :
+        with open(filename, "w") as newTweetsFile:
+            newTweetsFile.write("tweet_id,")
+            newTweetsFile.write("hashtags,")
+            newTweetsFile.write("mentions,")
+            newTweetsFile.write("uppercase,")
+            newTweetsFile.write("nonalpha,")
+            newTweetsFile.write("urls,")
+            newTweetsFile.write("len,")
+            newTweetsFile.write("numbers,")
+            newTweetsFile.write("spam")
+            newTweetsFile.write("\n")
+            for tweet_raw in self.tweets :
+                tweet = TweetFeatureExtractor(tweet_raw.tweet_id)
+                tweet.extractFeatures(tweet_raw.text)
+                newTweetsFile.write(str(tweet.tweet_id))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["hashtags"]))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["mentions"]))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["uppercase"]))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["nonalpha"]))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["urls"]))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["len"]))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["numbers"]))
+                newTweetsFile.write(",")
+                if tweet_raw.label :
+                    newTweetsFile.write(tweet_raw.label)
+                else :
+                    newTweetsFile.write("?")
+                newTweetsFile.write("\n")
+            newTweetsFile.close()
 
 twitterBankOfVen = TweetsBank("datasets/tuits_solo_texto.csv")
 twitterBankOfVen.classifyTweets()
-
-twitterBankOfVen.classifyTweets()
+twitterBankOfVen.saveTweets("datasets/featureVectors.csv")
