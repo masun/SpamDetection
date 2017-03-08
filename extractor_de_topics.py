@@ -11,7 +11,7 @@ from palabras_comunes import palabras_comunes
 
 vectorizer = text.CountVectorizer(input='datasets/tuits_solo_texto.csv', 
                                     stop_words=palabras_comunes, 
-                                    min_df=20)
+                                    max_df=0.5)
 
 file = open('datasets/tuits_solo_texto.csv',"r")
 lineas = file.readlines()
@@ -23,8 +23,8 @@ vocab = np.array(vectorizer.get_feature_names())
 
 from sklearn import decomposition
 
-num_topics = 20
-num_top_words = 20
+num_topics = 10
+num_top_words = 10
 clf = decomposition.NMF(n_components=num_topics, random_state=1)
 doctopic = clf.fit_transform(dtm)
 
