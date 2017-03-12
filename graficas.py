@@ -11,15 +11,16 @@ dict_datos = csv.DictReader(open("datasets/featureVectors.csv", "r"))
 # Se leen los datos de los top topics.
 dict_datos_top = csv.DictReader(open("datasets/idTuitsWithTopTopics.csv", "r"))
 
+# Se leen los wordsbag.
+dict_datos_wordbags = csv.DictReader(open("datasets/topicsWithTopWords.csv", "r"))
+
 # Nombre de los atributos
 nombres_atributos = ['tweet_id','hashtags','mentions','uppercase','nonalpha','urls','len','numbers']
 
 # Wordsbag
-wordsbag = ['video chavista periodista sentada dtb', 'venezuela vivo cnn soyfdelrincon senal', 
-			'trump donald mes opinion mexico', 'muerte dolares angeles venden prostitutas',
-			'ecuador vuelta cne lomasvisto resultados', 'uu ee indocumentados inmigrantes aissami',
-			'sports illustrated 2017 rubia portada', 'fotos lomasvisto anos 90 accesorios', 
-			'muere brutal embarazada companeras recibir', 'jong kim nam muerte corea']
+wordsbag = []
+for instancia in dict_datos_wordbags: #Para cada instancia.
+	wordsbag.append((instancia[' wordsbag']).replace('\'',''))
 
 # Lista con los id para los top topics de cada fuente.
 top_topicsL = ['top_topic_1', 'top_topic_2', 'top_topic_3']
