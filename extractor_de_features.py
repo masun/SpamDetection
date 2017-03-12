@@ -177,6 +177,6 @@ class TweetsBank :
                 newTweetsFile.write("\n")
             newTweetsFile.close()
 
-twitterBankOfVen = TweetsBank("datasets/tuits_solo_texto.csv")
+twitterBankOfVen = TweetsBank("datasets/CNNEE_TUITS.csv")
 twitterBankOfVen.classifyTweets()
-twitterBankOfVen.saveTweets("datasets/featureVectors.csv")
+twitterBankOfVen.saveTweets("datasets/featureVectors_CNNEE.csv")
