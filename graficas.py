@@ -63,7 +63,11 @@ for i in range(nro_atributos):
 # Graficas para los top_topics.
 
 vector_topTopics = [[0 for i in range(0, len(wordsbag)) ] for d in range(0, len(top_topicsL))]
+vector_clasificacion = [[[0 for j in range(0,3)] for i in range(0, len(wordsbag)) ] for d in range(0, len(top_topicsL))]
 
+datos_topL =list(dict_datos_top) # Lista con los top_topics.
+
+# Calculo de frecuencia de los topicas para cada top topic.
 i = 0 # Identificar de la fuente a usar.
 for instancia in dict_datos_top: #Para cada instancia.
 	for atributo in top_topicsL: # Para cada atributo de la instancia actual
@@ -71,22 +75,52 @@ for instancia in dict_datos_top: #Para cada instancia.
 		i += 1
 	i = 0
 
+# Calculo de frecuencias para cada clasificacion de cada topic en cada uno de los top topic.
+for instancia in dict_datos: #Para cada instancia.
+	j = 0
+	for top_topic in top_topicsL:
+		#print "Tweet " + str(i) + " en el top topic " + str(j) + " es spam?: " + instancia['spam']
+		if (instancia['spam'] == 'y'):
+			vector_clasificacion[j][int(datos_topL[i][top_topic])][0] += 1
+		elif (instancia['spam'] == 'n'):
+			vector_clasificacion[j][int(datos_topL[i][top_topic])][1] += 1
+		else:
+			vector_clasificacion[j][int(datos_topL[i][top_topic])][2] += 1
+		j += 1
+	i += 1
+
+
 # Colores para cada barra.
-colors = ["#EC644B", "#D2527F", "#663399", "#446CB3", "#2C3E50", "#36D7B7", 
+colorsFr = ["#EC644B", "#D2527F", "#663399", "#446CB3", "#2C3E50", "#36D7B7", 
 		  "#E9D460", "#F2784B", "#D35400", "#6C7A89"]
 
 
 # Se dibuja el barchart para cada fuente con su top topic.
 x = np.arange(len(wordsbag))     # Wordsbags de los top topics.
-
+"""
 # Hago el diagrama de cajas para cada top topic.
 for i in range(0, len(top_topicsL)):
-	barchart = plt.bar(x, vector_topTopics[i], align='center', color=colors)
+	barchart = plt.bar(x, vector_topTopics[i], align='center', color=colorsFr)
 	plt.xticks(x, x)                  # Para que se pueda ver cada elemento del xaxis.
 	plt.xlim(-0.5, len(wordsbag)-0.5) # Limite x de la grafica.
 	plt.xlabel('Id del topic')
 	plt.ylabel('Frecuencias')
 	plt.title('Frecuencias de tweets asociado a un topico para el Top topic ' + str(i + 1))
 	plt.show()						  # Se plotea.
+"""
+
+colorsCls = ["g","r", "b"] 
+# Hago el diagrama de cajas para cada clasificacion de cada topic en cada top topic.
+for i in range(0, len(vector_clasificacion)):
+	for j in range(0, len(x)):
+		x_pos = np.arange(len(vector_clasificacion[i][j]))
+		barchart = plt.bar(x_pos, vector_clasificacion[i][j], align='center', color=colorsCls)
+		plt.xticks(x_pos, ['Spam','No Spam', 'No clasificado']) # Para que se pueda ver cada elemento del xaxis.
+		plt.xlim(-0.5, len(x_pos)-0.5) # Limite x de la grafica.
+		plt.xlabel('Clasificacion')
+		plt.ylabel('Frecuencias')
+		plt.title('Frecuencias de tweets asociado al topico ' + str(j) + ' para el Top topic ' + str(i + 1))
+		plt.show()						  # Se plotea.
+
 
 #.-----------------------------------------------------------------------------.
