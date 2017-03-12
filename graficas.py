@@ -74,12 +74,20 @@ for instancia in dict_datos_top: #Para cada instancia (fuente de datos)
 colors = ["#EC644B", "#D2527F", "#663399", "#446CB3", "#2C3E50", "#36D7B7", 
 		  "#E9D460", "#F2784B", "#D35400", "#6C7A89"]
 
+
 # Se dibuja el barchart para cada fuente con su top_topic.
 x = np.arange(len(wordsbag))     # Wordsbags de la fuente actual.
+
+# Se crean los labels labels:
+labelx = labelLegend = ()
+for i in range(0, len(wordsbag)):
+	labelx += (x[i],)
+	labelLegend += (wordsbag[i],)
+
 barchart = plt.bar(x, vector_topTopics[0], align='center', color=colors)
 plt.xticks(x, x)                  # Para que se pueda ver cada elemento del xaxis.
 plt.xlim(-0.5, len(wordsbag)-0.5) # Limite x de la grafica.
-plt.legend()
+plt.legend(x, vector_topTopics)
 plt.show()						  # Se plotea.
 
 #.-----------------------------------------------------------------------------.
