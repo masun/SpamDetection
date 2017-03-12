@@ -5,6 +5,7 @@ import re
 import csv
 import itertools
 
+
 class TweetFeatureExtractor :
     
     def __init__(self, tweet_id):
@@ -33,7 +34,7 @@ class TweetFeatureExtractor :
     
     def numbersFeature(self, tweet) :
         self.tweetFeatureCount["numbers"] = \
-            len(re.findall(r'\s[0-9]+\s', tweet))
+            len(re.findall(r'\s\d*[.,]?\d*\s', tweet))
         
     
     def extractFeatures(self, tweetText) :
@@ -41,14 +42,16 @@ class TweetFeatureExtractor :
         self.urlFeature(tweetText)
         self.numbersFeature(tweetText)
         for word in tweetText.split(" ") :
+            for letter in word:
+                if not letter.isalnum() :
+                    self.addFeature("nonalpha")
+                if letter.isupper() :
+                    self.addFeature("uppercase")
             if word.startswith("@") :
                 self.addFeature("mentions")
             elif word.startswith("#") :
                 self.addFeature("hashtags")
-            elif not word.isalpha() :
-                self.addFeature("nonalpha")
-            elif word.isupper() :
-                self.addFeature("uppercase")
+                
             
             
         
@@ -105,9 +108,11 @@ class TweetsBank :
         self.tweets = []
         input_file = csv.DictReader(open(csvFilename, "r"))
         for key,row in enumerate(input_file):
-            if "id" not in row :
-                tweet = Tweet(row["text"], key)
-            else :
+            if ("id" not in row) and ("tweet_id" not in row) :
+                tweet = Tweet(row["text"], str(key))
+            elif "tweet_id" in row :
+                tweet = Tweet(row["text"], row["tweet_id"])
+            elif "id" in row :
                 tweet = Tweet(row["text"], row["id"])
             self.tweets.append(tweet)
         self.tweetGenerator = self.generateTweets()
@@ -176,7 +181,24 @@ class TweetsBank :
                     newTweetsFile.write("?")
                 newTweetsFile.write("\n")
             newTweetsFile.close()
+    
+    def updateFeatures(self, featuresCSVFilename):
+        input_file = csv.DictReader(open(featuresCSVFilename, "r+"))
+        label_dict = dict()
+        for key,row in enumerate(input_file):
+            if ("id" not in row) and ("tweet_id" not in row) :
+                label_dict[str(key)] = row["spam"]
+            elif "tweet_id" in row :
+                label_dict[row["tweet_id"]] = row["spam"]
+            elif "id" in row :
+                label_dict[row["id"]] = row["spam"]
+        
+        for tweet in self.tweets :
+            tweet.label = label_dict[tweet.tweet_id]
+        
+        self.saveTweets(featuresCSVFilename)
+
+
 
 twitterBankOfVen = TweetsBank("datasets/CNNEE_TUITS.csv")
-twitterBankOfVen.classifyTweets()
-twitterBankOfVen.saveTweets("datasets/featureVectors_CNNEE.csv")
+twitterBankOfVen.updateFeatures("datasets/featureVectors_CNNEE.csv")
