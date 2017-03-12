@@ -9,32 +9,38 @@ from palabras_comunes import palabras_comunes
 
 
 # Token count matrix
+print("Computing term frequency matrix")
 vectorizer = text.CountVectorizer(input='datasets/tuits_solo_texto.csv', 
                                     stop_words=palabras_comunes, 
                                     max_df=0.5,
                                     lowercase=True,
-                                    strip_accents="unicode",
-                                    encoding="utf-8")
+                                    strip_accents="ascii",
+                                    encoding="utf-8",
+                                    analyzer="word")
 
 file = open('datasets/tuits_solo_texto.csv',"r")
 lineas = file.readlines()
 file.close()
 
 # Document term matrix
+print("Computing document term matrix")
 dtm = vectorizer.fit_transform(lineas).toarray()
 
 vocab = np.array(vectorizer.get_feature_names())
 
 from sklearn import decomposition
 
+
 num_topics = 10
 num_top_words = 5
+print("Applying NMF with "+str(num_topics)+" topics and "+str(num_top_words)+" top words")
 clf = decomposition.NMF(n_components=num_topics, random_state=1)
 doctopic = clf.fit_transform(dtm)
 
 
 topic_words = []
 
+print("Getting top words")
 for topic in clf.components_:
     word_idx = np.argsort(topic)[::-1][0:num_top_words]
     topic_words.append([vocab[i].encode('utf-8') for i in word_idx])
@@ -44,6 +50,7 @@ doctopic = doctopic / np.sum(doctopic, axis=1, keepdims=True)
 #print document-vs-topic-matrix dim
 print("(documents, terms) = ",dtm.shape)
 
+print("Saving tweet_id with its topics datasets/idTuitsWithTopTopics.csv")
 #Se enlaza el id de cada tuit con los ids de sus top topics
 with open("datasets/idTuitsWithTopTopics.csv","w") as fileDocTopics :
     fileDocTopics.write("tweet_id,top_topic_1,top_topic_2,top_topic_3\n")
@@ -57,6 +64,7 @@ with open("datasets/idTuitsWithTopTopics.csv","w") as fileDocTopics :
                             str(top_topics[2])+"\n")
     fileDocTopics.close()
 
+print("Saving topic_id with its top words datasets/topicsWithTopWords.csv")
 # Se enlaza el id de cada topic con sus top words
 with open("datasets/topicsWithTopWords.csv","w") as fileTopics :
     fileTopics.write("id_topic, wordsbag\n")
