@@ -32,7 +32,7 @@ writer9 = csv.writer(ofile9, delimiter=',')
 
 
 # Se leen los datos de los top topics.
-dict_datos_top = csv.DictReader(open("datasets/idTuitsWithTopTopics.csv", "r"))
+dict_datos_top = csv.DictReader(open("datasets/idTuitsWithTopTopicsEntrenamiento.csv", "r"))
 datos_topL =list(dict_datos_top) # Se transforma en una lista con los top_topics.
  
 i = 0
