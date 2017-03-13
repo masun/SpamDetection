@@ -4,7 +4,7 @@
 import csv
 
 # Input file donde está la data.
-ifile  = open("datasets/featureVectors.csv", "rb")
+ifile  = open("datasets/featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO.csv", "rb")
 reader = csv.reader(ifile)
 
 # Output file donde se almacenará los datos de cada topico.
