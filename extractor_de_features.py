@@ -4,7 +4,7 @@
 import re
 import csv
 import itertools
-
+from random import shuffle
 
 class TweetFeatureExtractor :
     
@@ -114,6 +114,7 @@ class TweetsBank :
                 tweet = Tweet(row["text"], row["tweet_id"])
             elif "id" in row :
                 tweet = Tweet(row["text"], row["id"])
+            
             self.tweets.append(tweet)
         self.tweetGenerator = self.generateTweets()
     
@@ -198,7 +199,18 @@ class TweetsBank :
         
         self.saveTweets(featuresCSVFilename)
 
+with open("datasets/dumpCaraotaDigitalCNNELaPatilla.csv","r") as f :
+    l = f.readlines()
+    f.close()
 
+ran = l[1:]
+shuffle(ran)
+header = [l[0]]
 
-twitterBankOfVen = TweetsBank("datasets/CNNEE_TUITS.csv")
-twitterBankOfVen.updateFeatures("datasets/featureVectors_CNNEE.csv")
+with open("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv","w") as f :
+    f.writelines(header + ran)
+    f.close()
+
+twitterBankOfVen = TweetsBank("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv")
+twitterBankOfVen.classifyTweets()
+twitterBankOfVen.saveTweets("datasets/featureVectorsDumpCaraotaDigitalCNNELaPatilla.csv")
