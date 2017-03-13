@@ -53,23 +53,23 @@ for row in reader:
 	else:
 		if datos_topL[i]['top_topic_1'] == str(0): 
 			writer0.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(1): 
+		elif datos_topL[i]['top_topic_1'] == str(1): 
 			writer1.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(2): 
+		elif datos_topL[i]['top_topic_1'] == str(2): 
 			writer2.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(3): 
+		elif datos_topL[i]['top_topic_1'] == str(3): 
 			writer3.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(4): 
+		elif datos_topL[i]['top_topic_1'] == str(4): 
 			writer4.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(5): 
+		elif datos_topL[i]['top_topic_1'] == str(5): 
 			writer5.writerow(row)
 		if datos_topL[i]['top_topic_1'] == str(6): 
 			writer6.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(7): 
+		elif datos_topL[i]['top_topic_1'] == str(7): 
 			writer7.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(8): 
+		elif datos_topL[i]['top_topic_1'] == str(8): 
 			writer8.writerow(row)
-		else:
+		elif datos_topL[i]['top_topic_1'] == str(9):
 			writer9.writerow(row)
 		i += 1
 	# Se cierran todos los archivos.
