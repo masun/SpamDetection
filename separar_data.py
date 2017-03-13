@@ -4,7 +4,7 @@
 import csv
 
 # Input file donde está la data.
-ifile  = open("datasets/featureVectors.csv", "rb")
+ifile  = open("datasets/featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO.csv", "rb")
 reader = csv.reader(ifile)
 
 # Output file donde se almacenará los datos de cada topico.
@@ -32,7 +32,7 @@ writer9 = csv.writer(ofile9, delimiter=',')
 
 
 # Se leen los datos de los top topics.
-dict_datos_top = csv.DictReader(open("datasets/idTuitsWithTopTopics.csv", "r"))
+dict_datos_top = csv.DictReader(open("datasets/idTuitsWithTopTopicsEntrenamiento.csv", "r"))
 datos_topL =list(dict_datos_top) # Se transforma en una lista con los top_topics.
  
 i = 0
