@@ -9,9 +9,11 @@ from palabras_comunes import palabras_comunes
 import csv
 
 texts = []
+statuses = []
 input_file = csv.DictReader(open("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv", "r"))
 for row in input_file:
     texts.append(row["text"])
+    statuses.append(row)
 
 
 # Token count matrix
@@ -57,7 +59,7 @@ print("Saving tweet_id with its topics datasets/idTuitsWithTopTopics.csv")
 #Se enlaza el id de cada tuit con los ids de sus top topics
 with open("datasets/idTuitsWithTopTopics.csv","w") as fileDocTopics :
     fileDocTopics.write("tweet_id,top_topic_1,top_topic_2,top_topic_3\n")
-    for i,row in enumerate(input_file):
+    for i,row in enumerate(statuses):
         top_topics = np.argsort(doctopic[i,:])[::-1][0:3]
         top_topics_str = ' '.join(str(t) for t in top_topics)
         #print("{}: {}".format(i, top_topics_str))
