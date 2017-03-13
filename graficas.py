@@ -23,7 +23,7 @@ for instancia in dict_datos_wordbags: #Para cada instancia.
 	wordsbag.append((instancia[' wordsbag']).replace('\'',''))
 
 # Lista con los id para los top topics de cada fuente.
-top_topicsL = ['top_topic_1', 'top_topic_2', 'top_topic_3']
+top_topicsL = ['top_topic_1']
 
 nro_atributos = len(nombres_atributos)
 nro_wordsbag  = len(wordsbag)
@@ -62,8 +62,9 @@ for i in range(nro_atributos):
 """
 # Graficas para los top_topics.
 
-vector_topTopics = [[0 for i in range(0, len(wordsbag)) ] for d in range(0, len(top_topicsL))]
-vector_clasificacion = [[[0 for j in range(0,3)] for i in range(0, len(wordsbag)) ] for d in range(0, len(top_topicsL))]
+vector_topTopics     = [[0 for i in range(0, len(wordsbag)) ] for d in range(0, len(top_topicsL))]
+vector_clasificacion = [[[0 for j in range(0,2)] for i in range(0, len(wordsbag)) ] for d in range(0, len(top_topicsL))]
+total_clasificacion  = [0,0] # Almacenará la cantidad de tweets que son spam y cuales no.
 
 datos_topL =list(dict_datos_top) # Lista con los top_topics.
 
@@ -82,10 +83,10 @@ for instancia in dict_datos: #Para cada instancia.
 		#print "Tweet " + str(i) + " en el top topic " + str(j) + " es spam?: " + instancia['spam']
 		if (instancia['spam'] == 'y'):
 			vector_clasificacion[j][int(datos_topL[i][top_topic])][0] += 1
+			total_clasificacion[0] += 1
 		elif (instancia['spam'] == 'n'):
 			vector_clasificacion[j][int(datos_topL[i][top_topic])][1] += 1
-		else:
-			vector_clasificacion[j][int(datos_topL[i][top_topic])][2] += 1
+			total_clasificacion[1] += 1	
 		j += 1
 	i += 1
 
@@ -109,7 +110,7 @@ for i in range(0, len(top_topicsL)):
 	plt.show()						  # Se plotea.
 """
 
-colorsCls = ["g","r", "b"] 
+colorsCls = ["g","r"] 
 # Hago el diagrama de cajas para cada clasificacion de cada topic en cada top topic.
 for i in range(0, len(vector_clasificacion)):
 	for j in range(0, len(x)):
