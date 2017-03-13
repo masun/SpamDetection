@@ -6,7 +6,15 @@ import csv
 import itertools
 from random import shuffle
 
+
+
 class TweetFeatureExtractor :
+    
+    """
+    #   Ayuda a extraer los features de cada tuit
+    #
+    #
+    """
     
     def __init__(self, tweet_id):
         self.tweet_id = tweet_id
@@ -56,37 +64,16 @@ class TweetFeatureExtractor :
             
         
 
-class tweetsFeatureExtractor :
-    
-    def __init__(self) :
-        self.tweetsFeatureCount = dict()
-        self.tweetsFeatureCount["hashtags"] = 0
-        self.tweetsFeatureCount["mentions"] = 0
-        self.tweetsFeatureCount["uppercase"] = 0
-        self.tweetsFeatureCount["nonalpha"] = 0
-        self.tweetsFeatureCount["urls"] = 0
-        self.tweetsFeatureCount["len"] = 0
-        self.tweetsFeatureCount["numbers"] = 0
-        
-        self.tweetCount = 0
-    
-    def addFeatures(self, featureExtractor) :
-        for key in self.tweetsFeatureCount :
-            self.tweetsFeatureCount[key] += featureExtractor.getFeature(key)
-    
-    def extractFeatures(self, tweets) :
-        
-        for tweet in tweets :
-            self.tweetCount += 1
-            featureExtractor = TweetFeatureExtractor(tweet.tweet_id)
-            featureExtractor.extractFeatures(tweet.text)
-            self.addFeatures(featureExtractor)
-        
-    
-    
 
 
 class Tweet :
+    
+    """
+    #   Guarda un tuit
+    #
+    #
+    """
+    
     
     def __init__(self, text, tweet_id) :
         self.text = text
@@ -95,18 +82,28 @@ class Tweet :
     
     def classify(self) :
         self.label = raw_input("Text: "+self.text+" \n\n Input label: (y/n) (s for stopping): ")
+        # Si el usuario no quiere seguir clasificando
         if self.label == 's' :
             self.label = None
             raise BreakIt
     
 
+# Esto se usa para salir de la clasificacion sin perder el generador. Es un truco.
 class BreakIt(Exception): pass
 
 class TweetsBank :
     
+    """
+    #   Administra todos los tuits
+    #
+    #
+    """
+    
     def __init__(self, csvFilename) :
         self.tweets = []
         input_file = csv.DictReader(open(csvFilename, "r"))
+        # row es cada linea del csv de entrada. Es un diccionario
+        # cuyas keys son los nombres de cada columna del archivo
         for key,row in enumerate(input_file):
             if ("id" not in row) and ("tweet_id" not in row) :
                 tweet = Tweet(row["text"], str(key))
@@ -124,7 +121,6 @@ class TweetsBank :
     
     def classifyTweets(self) :
         
-        
         for tweet in self.tweetGenerator :
             try:
                 tweet.classify()
@@ -134,16 +130,6 @@ class TweetsBank :
                     itertools.chain([tweet], self.tweetGenerator)
                 break
         
-    
-    """
-        self.tweetFeatureCount["hastags"] = 0
-        self.tweetFeatureCount["mentions"] = 0
-        self.tweetFeatureCount["uppercase"] = 0
-        self.tweetFeatureCount["nonalpha"] = 0
-        self.tweetFeatureCount["urls"] = 0
-        self.tweetFeatureCount["len"] = 0
-        self.tweetFeatureCount["numbers"] = 0
-    """
     
     def saveTweets(self, filename) :
         with open(filename, "w") as newTweetsFile:
@@ -199,18 +185,28 @@ class TweetsBank :
         
         self.saveTweets(featuresCSVFilename)
 
+
+# Se abre el archivo generado por birdwatcher
 with open("datasets/dumpCaraotaDigitalCNNELaPatilla.csv","r") as f :
     l = f.readlines()
     f.close()
 
+# Se desordenan sus lineas
 ran = l[1:]
 shuffle(ran)
 header = [l[0]]
 
+# Se guardan las lineas desordenadas
 with open("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv","w") as f :
     f.writelines(header + ran)
     f.close()
 
+# Se lee el archivo fuente y se crea un banco de tuits
 twitterBankOfVen = TweetsBank("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv")
+
+# Se clasifican manualmente algunos de ellos
 twitterBankOfVen.classifyTweets()
+
+# Se calculan los features y se guarda todo junto con la clasificacion manual
+# de arriba
 twitterBankOfVen.saveTweets("datasets/featureVectorsDumpCaraotaDigitalCNNELaPatilla.csv")
