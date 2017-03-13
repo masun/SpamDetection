@@ -5,9 +5,11 @@
 
 import numpy as np
 import sklearn.feature_extraction.text as text
+from sklearn import decomposition
 from palabras_comunes import palabras_comunes
 import csv
 
+# Se abre el archivo con tuits desordenados y se guardan sus contenidos
 texts = []
 statuses = []
 input_file = csv.DictReader(open("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv", "r"))
@@ -33,9 +35,8 @@ dtm = vectorizer.fit_transform(texts).toarray()
 
 vocab = np.array(vectorizer.get_feature_names())
 
-from sklearn import decomposition
 
-
+# Se aplica la factorizacion no negativa de la matriz de frecuencias
 num_topics = 10
 num_top_words = 5
 print("Applying NMF with "+str(num_topics)+" topics and "+str(num_top_words)+" top words")
@@ -45,6 +46,7 @@ doctopic = clf.fit_transform(dtm)
 
 topic_words = []
 
+# Se obtienen los top words por cada topico
 print("Getting top words")
 for topic in clf.components_:
     word_idx = np.argsort(topic)[::-1][0:num_top_words]
@@ -54,6 +56,7 @@ doctopic = doctopic / np.sum(doctopic, axis=1, keepdims=True)
 
 #print document-vs-topic-matrix dim
 print("(documents, terms) = ",dtm.shape)
+
 
 print("Saving tweet_id with its topics datasets/idTuitsWithTopTopics.csv")
 #Se enlaza el id de cada tuit con los ids de sus top topics
