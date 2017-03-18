@@ -1,0 +1,510 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -Q -P 100 -S 1 -I 20 -W weka.classifiers.trees.DecisionStump
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO_filtro_cluster_k_means_euclidean-weka.filters.unsupervised.attribute.Remove-R1,9
+Instances:    700
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              cluster
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+numbers <= 0.5 : cluster2
+numbers > 0.5 : cluster1
+numbers is missing : cluster2
+
+Class distributions
+
+numbers <= 0.5
+cluster2	cluster1	
+0.9704016913319239	0.02959830866807611	
+numbers > 0.5
+cluster2	cluster1	
+0.3303964757709251	0.6696035242290749	
+numbers is missing
+cluster2	cluster1	
+0.7628571428571429	0.23714285714285716	
+
+
+Weight: 2.02
+
+Decision Stump
+
+Classifications
+
+urls <= 1.5 : cluster2
+urls > 1.5 : cluster2
+urls is missing : cluster2
+
+Class distributions
+
+urls <= 1.5
+cluster2	cluster1	
+0.5057034220532319	0.49429657794676807	
+urls > 1.5
+cluster2	cluster1	
+0.9610983981693364	0.038901601830663615	
+urls is missing
+cluster2	cluster1	
+0.79	0.21	
+
+
+Weight: 1.23
+
+Decision Stump
+
+Classifications
+
+urls <= 1.5 : cluster1
+urls > 1.5 : cluster2
+urls is missing : cluster2
+
+Class distributions
+
+urls <= 1.5
+cluster2	cluster1	
+0.20151133501259447	0.7984886649874056	
+urls > 1.5
+cluster2	cluster1	
+0.9207920792079208	0.07920792079207921	
+urls is missing
+cluster2	cluster1	
+0.5128571428571429	0.48714285714285716	
+
+
+Weight: 1.64
+
+Decision Stump
+
+Classifications
+
+numbers <= 1.5 : cluster2
+numbers > 1.5 : cluster1
+numbers is missing : cluster2
+
+Class distributions
+
+numbers <= 1.5
+cluster2	cluster1	
+0.7404718693284936	0.2595281306715064	
+numbers > 1.5
+cluster2	cluster1	
+0.0	1.0	
+numbers is missing
+cluster2	cluster1	
+0.5828571428571429	0.41714285714285715	
+
+
+Weight: 1.28
+
+Decision Stump
+
+Classifications
+
+mentions <= 1.5 : cluster2
+mentions > 1.5 : cluster1
+mentions is missing : cluster1
+
+Class distributions
+
+mentions <= 1.5
+cluster2	cluster1	
+0.504424778761062	0.49557522123893805	
+mentions > 1.5
+cluster2	cluster1	
+0.0	1.0	
+mentions is missing
+cluster2	cluster1	
+0.40714285714285714	0.5928571428571429	
+
+
+Weight: 0.43
+
+Decision Stump
+
+Classifications
+
+urls <= 0.5 : cluster1
+urls > 0.5 : cluster1
+urls is missing : cluster1
+
+Class distributions
+
+urls <= 0.5
+cluster2	cluster1	
+0.0	1.0	
+urls > 0.5
+cluster2	cluster1	
+0.3888888888888889	0.6111111111111112	
+urls is missing
+cluster2	cluster1	
+0.31	0.69	
+
+
+Weight: 0.81
+
+Decision Stump
+
+Classifications
+
+mentions <= 1.5 : cluster2
+mentions > 1.5 : cluster1
+mentions is missing : cluster1
+
+Class distributions
+
+mentions <= 1.5
+cluster2	cluster1	
+0.5672913117546848	0.43270868824531517	
+mentions > 1.5
+cluster2	cluster1	
+0.0	1.0	
+mentions is missing
+cluster2	cluster1	
+0.4757142857142857	0.5242857142857142	
+
+
+Weight: 0.57
+
+Decision Stump
+
+Classifications
+
+numbers <= 0.5 : cluster2
+numbers > 0.5 : cluster1
+numbers is missing : cluster1
+
+Class distributions
+
+numbers <= 0.5
+cluster2	cluster1	
+0.601123595505618	0.398876404494382	
+numbers > 0.5
+cluster2	cluster1	
+0.18604651162790697	0.813953488372093	
+numbers is missing
+cluster2	cluster1	
+0.39714285714285713	0.6028571428571429	
+
+
+Weight: 0.77
+
+Decision Stump
+
+Classifications
+
+urls <= 0.5 : cluster1
+urls > 0.5 : cluster1
+urls is missing : cluster1
+
+Class distributions
+
+urls <= 0.5
+cluster2	cluster1	
+0.0	1.0	
+urls > 0.5
+cluster2	cluster1	
+0.4897959183673469	0.5102040816326531	
+urls is missing
+cluster2	cluster1	
+0.34285714285714286	0.6571428571428571	
+
+
+Weight: 0.51
+
+Decision Stump
+
+Classifications
+
+urls <= 0.5 : cluster1
+urls > 0.5 : cluster2
+urls is missing : cluster2
+
+Class distributions
+
+urls <= 0.5
+cluster2	cluster1	
+0.0	1.0	
+urls > 0.5
+cluster2	cluster1	
+0.6625	0.3375	
+urls is missing
+cluster2	cluster1	
+0.53	0.47	
+
+
+Weight: 0.89
+
+Decision Stump
+
+Classifications
+
+numbers <= 1.5 : cluster1
+numbers > 1.5 : cluster1
+numbers is missing : cluster1
+
+Class distributions
+
+numbers <= 1.5
+cluster2	cluster1	
+0.4075993091537133	0.5924006908462867	
+numbers > 1.5
+cluster2	cluster1	
+0.0	1.0	
+numbers is missing
+cluster2	cluster1	
+0.33714285714285713	0.6628571428571428	
+
+
+Weight: 0.61
+
+Decision Stump
+
+Classifications
+
+mentions <= 1.5 : cluster2
+mentions > 1.5 : cluster1
+mentions is missing : cluster1
+
+Class distributions
+
+mentions <= 1.5
+cluster2	cluster1	
+0.5665024630541872	0.43349753694581283	
+mentions > 1.5
+cluster2	cluster1	
+0.0	1.0	
+mentions is missing
+cluster2	cluster1	
+0.4928571428571429	0.5071428571428571	
+
+
+Weight: 0.5
+
+Decision Stump
+
+Classifications
+
+numbers <= 1.5 : cluster1
+numbers > 1.5 : cluster1
+numbers is missing : cluster1
+
+Class distributions
+
+numbers <= 1.5
+cluster2	cluster1	
+0.4774305555555556	0.5225694444444444	
+numbers > 1.5
+cluster2	cluster1	
+0.0	1.0	
+numbers is missing
+cluster2	cluster1	
+0.39285714285714285	0.6071428571428571	
+
+
+Weight: 0.4
+
+Decision Stump
+
+Classifications
+
+numbers <= 1.5 : cluster2
+numbers > 1.5 : cluster1
+numbers is missing : cluster2
+
+Class distributions
+
+numbers <= 1.5
+cluster2	cluster1	
+0.5932203389830508	0.4067796610169492	
+numbers > 1.5
+cluster2	cluster1	
+0.0	1.0	
+numbers is missing
+cluster2	cluster1	
+0.5	0.5	
+
+
+Weight: 0.55
+
+Decision Stump
+
+Classifications
+
+urls <= 1.5 : cluster1
+urls > 1.5 : cluster2
+urls is missing : cluster1
+
+Class distributions
+
+urls <= 1.5
+cluster2	cluster1	
+0.24795081967213115	0.7520491803278688	
+urls > 1.5
+cluster2	cluster1	
+0.7028301886792453	0.2971698113207547	
+urls is missing
+cluster2	cluster1	
+0.38571428571428573	0.6142857142857143	
+
+
+Weight: 1.03
+
+Decision Stump
+
+Classifications
+
+numbers <= 1.5 : cluster2
+numbers > 1.5 : cluster1
+numbers is missing : cluster2
+
+Class distributions
+
+numbers <= 1.5
+cluster2	cluster1	
+0.6233333333333333	0.37666666666666665	
+numbers > 1.5
+cluster2	cluster1	
+0.0	1.0	
+numbers is missing
+cluster2	cluster1	
+0.5342857142857143	0.4657142857142857	
+
+
+Weight: 0.67
+
+Decision Stump
+
+Classifications
+
+numbers <= 0.5 : cluster2
+numbers > 0.5 : cluster1
+numbers is missing : cluster1
+
+Class distributions
+
+numbers <= 0.5
+cluster2	cluster1	
+0.5826330532212886	0.4173669467787115	
+numbers > 0.5
+cluster2	cluster1	
+0.15160349854227406	0.8483965014577259	
+numbers is missing
+cluster2	cluster1	
+0.37142857142857144	0.6285714285714286	
+
+
+Weight: 0.76
+
+Decision Stump
+
+Classifications
+
+urls <= 0.5 : cluster1
+urls > 0.5 : cluster1
+urls is missing : cluster1
+
+Class distributions
+
+urls <= 0.5
+cluster2	cluster1	
+0.0	1.0	
+urls > 0.5
+cluster2	cluster1	
+0.4851301115241636	0.5148698884758365	
+urls is missing
+cluster2	cluster1	
+0.37285714285714283	0.6271428571428571	
+
+
+Weight: 0.63
+
+Decision Stump
+
+Classifications
+
+urls <= 0.5 : cluster1
+urls > 0.5 : cluster2
+urls is missing : cluster1
+
+Class distributions
+
+urls <= 0.5
+cluster2	cluster1	
+0.0	1.0	
+urls > 0.5
+cluster2	cluster1	
+0.5759162303664922	0.42408376963350786	
+urls is missing
+cluster2	cluster1	
+0.4714285714285714	0.5285714285714286	
+
+
+Weight: 0.76
+
+Decision Stump
+
+Classifications
+
+mentions <= 1.5 : cluster1
+mentions > 1.5 : cluster1
+mentions is missing : cluster1
+
+Class distributions
+
+mentions <= 1.5
+cluster2	cluster1	
+0.45501730103806226	0.5449826989619377	
+mentions > 1.5
+cluster2	cluster1	
+0.0	1.0	
+mentions is missing
+cluster2	cluster1	
+0.3757142857142857	0.6242857142857143	
+
+
+Weight: 0.55
+
+Number of performed Iterations: 20
+
+
+Time taken to build model: 0.03 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         689               98.4286 %
+Incorrectly Classified Instances        11                1.5714 %
+Kappa statistic                          0.957 
+Mean absolute error                      0.0292
+Root mean squared error                  0.0963
+Relative absolute error                  7.7949 %
+Root relative squared error             22.2854 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1,000    0,063    0,980      1,000    0,990      0,958    1,000     1,000     cluster2
+                 0,937    0,000    1,000      0,937    0,967      0,958    1,000     1,000     cluster1
+Weighted Avg.    0,984    0,048    0,985      0,984    0,984      0,958    1,000     1,000     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 526   0 |   a = cluster2
+  11 163 |   b = cluster1
+
