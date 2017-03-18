@@ -1,0 +1,98 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO_filtro_cluster_k_means_euclidean-weka.filters.unsupervised.attribute.Remove-R1,9-weka.filters.unsupervised.attribute.SortLabels-Rlast-SNON-CASE
+Instances:    700
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              cluster
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                  Class
+Attribute      cluster1 cluster2
+                 (0.25)   (0.75)
+=================================
+hashtags
+  mean            0.3046   0.3289
+  std. dev.       0.4963   0.5517
+  weight sum         174      526
+  precision            1        1
+
+mentions
+  mean            0.3218   0.0494
+  std. dev.       0.7111   0.2168
+  weight sum         174      526
+  precision            1        1
+
+uppercase
+  mean            9.3333   10.715
+  std. dev.       4.3718    3.644
+  weight sum         174      526
+  precision       1.2609   1.2609
+
+nonalpha
+  mean           12.3982  12.9753
+  std. dev.       4.6887   4.0191
+  weight sum         174      526
+  precision       1.0417   1.0417
+
+urls
+  mean             1.023   1.5779
+  std. dev.       0.5247   0.4939
+  weight sum         174      526
+  precision            1        1
+
+len
+  mean          110.7243 111.4228
+  std. dev.      21.1257  19.8298
+  weight sum         174      526
+  precision       1.1348   1.1348
+
+numbers
+  mean            1.4195   0.1255
+  std. dev.       0.7595   0.3313
+  weight sum         174      526
+  precision            1        1
+
+
+
+Time taken to build model: 0 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.01 seconds
+
+=== Summary ===
+
+Correctly Classified Instances         136               55.2846 %
+Incorrectly Classified Instances       110               44.7154 %
+Kappa statistic                         -0.1255
+Mean absolute error                      0.4493
+Root mean squared error                  0.6287
+Relative absolute error                108.4354 %
+Root relative squared error            131.8782 %
+Total Number of Instances              246     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,123    0,236    0,204      0,123    0,154      -0,133   0,310     0,260     cluster1
+                 0,764    0,877    0,640      0,764    0,696      -0,133   0,310     0,542     cluster2
+Weighted Avg.    0,553    0,666    0,496      0,553    0,518      -0,133   0,310     0,449     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+  10  71 |   a = cluster1
+  39 126 |   b = cluster2
+
