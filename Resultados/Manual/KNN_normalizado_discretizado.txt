@@ -1,0 +1,49 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.lazy.IBk -K 1 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\""
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO_OUTLIERS-weka.filters.unsupervised.attribute.Remove-R1,10-11-weka.filters.unsupervised.attribute.Discretize-B10-M-1.0-Rfirst-last
+Instances:    700
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 1 nearest neighbour(s) for classification
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         572               81.7143 %
+Incorrectly Classified Instances       128               18.2857 %
+Kappa statistic                          0.2691
+Mean absolute error                      0.2367
+Root mean squared error                  0.4056
+Relative absolute error                 75.4572 %
+Root relative squared error            102.5227 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,950    0,735    0,843      0,950    0,893      0,295    0,667     0,868     n
+                 0,265    0,050    0,563      0,265    0,360      0,295    0,667     0,384     y
+Weighted Avg.    0,817    0,602    0,788      0,817    0,790      0,295    0,667     0,774     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 536  28 |   a = n
+ 100  36 |   b = y
+

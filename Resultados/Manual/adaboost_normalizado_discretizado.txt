@@ -1,0 +1,280 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO_OUTLIERS-weka.filters.unsupervised.attribute.Remove-R1,10-11-weka.filters.unsupervised.attribute.Discretize-B10-M-1.0-Rfirst-last
+Instances:    700
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+nonalpha = '(0.7-0.8]' : n
+nonalpha != '(0.7-0.8]' : n
+nonalpha is missing : n
+
+Class distributions
+
+nonalpha = '(0.7-0.8]'
+n	y	
+0.5128205128205128	0.48717948717948717	
+nonalpha != '(0.7-0.8]'
+n	y	
+0.8229954614220878	0.17700453857791226	
+nonalpha is missing
+n	y	
+0.8057142857142857	0.19428571428571428	
+
+
+Weight: 1.42
+
+Decision Stump
+
+Classifications
+
+nonalpha = '(0.7-0.8]' : y
+nonalpha != '(0.7-0.8]' : n
+nonalpha is missing : y
+
+Class distributions
+
+nonalpha = '(0.7-0.8]'
+n	y	
+0.2024412027389103	0.7975587972610896	
+nonalpha != '(0.7-0.8]'
+n	y	
+0.5285628554282282	0.4714371445717718	
+nonalpha is missing
+n	y	
+0.49999999999999967	0.5000000000000002	
+
+
+Weight: 0.21
+
+Decision Stump
+
+Classifications
+
+mentions = '(0.9-inf)' : n
+mentions != '(0.9-inf)' : y
+mentions is missing : y
+
+Class distributions
+
+mentions = '(0.9-inf)'
+n	y	
+1.0	0.0	
+mentions != '(0.9-inf)'
+n	y	
+0.44540414718196086	0.5545958528180391	
+mentions is missing
+n	y	
+0.4565353508394658	0.5434646491605342	
+
+
+Weight: 0.26
+
+Decision Stump
+
+Classifications
+
+numbers = '(-inf-0.1]' : n
+numbers != '(-inf-0.1]' : y
+numbers is missing : n
+
+Class distributions
+
+numbers = '(-inf-0.1]'
+n	y	
+0.5821976521018297	0.41780234789817017	
+numbers != '(-inf-0.1]'
+n	y	
+0.4062907838818793	0.5937092161181207	
+numbers is missing
+n	y	
+0.5178079630306823	0.4821920369693177	
+
+
+Weight: 0.35
+
+Decision Stump
+
+Classifications
+
+mentions = '(0.9-inf)' : n
+mentions != '(0.9-inf)' : y
+mentions is missing : y
+
+Class distributions
+
+mentions = '(0.9-inf)'
+n	y	
+1.0	0.0	
+mentions != '(0.9-inf)'
+n	y	
+0.4848403652194369	0.515159634780563	
+mentions is missing
+n	y	
+0.49449286299135387	0.505507137008646	
+
+
+Weight: 0.1
+
+Decision Stump
+
+Classifications
+
+mentions = '(0.9-inf)' : n
+mentions != '(0.9-inf)' : n
+mentions is missing : n
+
+Class distributions
+
+mentions = '(0.9-inf)'
+n	y	
+1.0	0.0	
+mentions != '(0.9-inf)'
+n	y	
+0.5090977833249297	0.4909022166750702	
+mentions is missing
+n	y	
+0.5178704045134735	0.48212959548652645	
+
+
+Weight: 0.07
+
+Decision Stump
+
+Classifications
+
+mentions = '(0.9-inf)' : n
+mentions != '(0.9-inf)' : y
+mentions is missing : n
+
+Class distributions
+
+mentions = '(0.9-inf)'
+n	y	
+1.0	0.0	
+mentions != '(0.9-inf)'
+n	y	
+0.4912216700504165	0.5087783299495835	
+mentions is missing
+n	y	
+0.5000000000000009	0.4999999999999991	
+
+
+Weight: 0.07
+
+Decision Stump
+
+Classifications
+
+mentions = '(0.9-inf)' : n
+mentions != '(0.9-inf)' : n
+mentions is missing : n
+
+Class distributions
+
+mentions = '(0.9-inf)'
+n	y	
+1.0	0.0	
+mentions != '(0.9-inf)'
+n	y	
+0.5084805496960416	0.4915194503039583	
+mentions is missing
+n	y	
+0.5166782184709152	0.48332178152908484	
+
+
+Weight: 0.07
+
+Decision Stump
+
+Classifications
+
+mentions = '(0.9-inf)' : n
+mentions != '(0.9-inf)' : y
+mentions is missing : y
+
+Class distributions
+
+mentions = '(0.9-inf)'
+n	y	
+1.0	0.0	
+mentions != '(0.9-inf)'
+n	y	
+0.4917976906714876	0.5082023093285124	
+mentions is missing
+n	y	
+0.4999999999999983	0.5000000000000017	
+
+
+Weight: 0.06
+
+Decision Stump
+
+Classifications
+
+nonalpha = '(0.4-0.5]' : n
+nonalpha != '(0.4-0.5]' : y
+nonalpha is missing : n
+
+Class distributions
+
+nonalpha = '(0.4-0.5]'
+n	y	
+0.6696935484907878	0.3303064515092123	
+nonalpha != '(0.4-0.5]'
+n	y	
+0.48227738585138236	0.5177226141486176	
+nonalpha is missing
+n	y	
+0.5156351525131566	0.4843648474868434	
+
+
+Weight: 0.18
+
+Number of performed Iterations: 10
+
+
+Time taken to build model: 0.03 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         562               80.2857 %
+Incorrectly Classified Instances       138               19.7143 %
+Kappa statistic                          0.0032
+Mean absolute error                      0.3057
+Root mean squared error                  0.3899
+Relative absolute error                 97.4547 %
+Root relative squared error             98.5327 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,995    0,993    0,806      0,995    0,890      0,011    0,630     0,863     n
+                 0,007    0,005    0,250      0,007    0,014      0,011    0,630     0,279     y
+Weighted Avg.    0,803    0,801    0,698      0,803    0,720      0,011    0,630     0,750     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 561   3 |   a = n
+ 135   1 |   b = y
+
