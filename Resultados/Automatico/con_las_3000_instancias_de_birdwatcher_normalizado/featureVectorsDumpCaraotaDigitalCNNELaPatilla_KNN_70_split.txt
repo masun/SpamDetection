@@ -1,0 +1,52 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.lazy.IBk -K 1 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\""
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatilla-weka.filters.unsupervised.attribute.Remove-R9-weka.filters.unsupervised.attribute.NumericToNominal-Rfirst-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-weka.filters.unsupervised.attribute.AddCluster-Wweka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -N 2 -A "weka.core.EuclideanDistance -R first-last" -I 500 -num-slots 1 -S 10-I1-weka.filters.unsupervised.instance.Randomize-S42-weka.filters.unsupervised.attribute.RenameNominalValues-R9-Ncluster1:n,cluster2:y-weka.filters.unsupervised.attribute.Remove-R1
+Instances:    3000
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              cluster
+Test mode:    split 70.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 1 nearest neighbour(s) for classification
+
+
+Time taken to build model: 0 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on test split: 0.14 seconds
+
+=== Summary ===
+
+Correctly Classified Instances         885               98.3333 %
+Incorrectly Classified Instances        15                1.6667 %
+Kappa statistic                          0.9657
+Mean absolute error                      0.0171
+Root mean squared error                  0.129 
+Relative absolute error                  3.5295 %
+Root relative squared error             26.1913 %
+Total Number of Instances              900     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,983    0,016    0,989      0,983    0,986      0,966    0,983     0,982     n
+                 0,984    0,017    0,976      0,984    0,980      0,966    0,983     0,970     y
+Weighted Avg.    0,983    0,016    0,983      0,983    0,983      0,966    0,983     0,977     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 518   9 |   a = n
+   6 367 |   b = y
+
