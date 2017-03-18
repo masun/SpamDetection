@@ -1,0 +1,54 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO_filtro_cluster_k_means_euclidean-weka.filters.unsupervised.attribute.Remove-R1,9-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-weka.filters.unsupervised.attribute.SortLabels-Rlast-SNON-CASE
+Instances:    700
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              cluster
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 0.26 seconds
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.02 seconds
+
+=== Summary ===
+
+Correctly Classified Instances         130               52.8455 %
+Incorrectly Classified Instances       116               47.1545 %
+Kappa statistic                         -0.0414
+Mean absolute error                      0.4957
+Root mean squared error                  0.6113
+Relative absolute error                119.629  %
+Root relative squared error            128.2372 %
+Total Number of Instances              246     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,333    0,376    0,303      0,333    0,318      -0,041   0,644     0,471     cluster1
+                 0,624    0,667    0,656      0,624    0,640      -0,041   0,644     0,868     cluster2
+Weighted Avg.    0,528    0,571    0,540      0,528    0,534      -0,041   0,644     0,737     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+  27  54 |   a = cluster1
+  62 103 |   b = cluster2
+

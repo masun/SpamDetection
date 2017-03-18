@@ -1,0 +1,51 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatillaENTRENAMIENTO_OUTLIERS-weka.filters.unsupervised.attribute.Remove-R1,10-11-weka.filters.unsupervised.attribute.Discretize-B10-M-1.0-Rfirst-last
+Instances:    700
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 0.41 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         562               80.2857 %
+Incorrectly Classified Instances       138               19.7143 %
+Kappa statistic                          0.2437
+Mean absolute error                      0.2597
+Root mean squared error                  0.3885
+Relative absolute error                 82.7893 %
+Root relative squared error             98.1935 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,931    0,728    0,841      0,931    0,884      0,258    0,689     0,876     n
+                 0,272    0,069    0,487      0,272    0,349      0,258    0,689     0,392     y
+Weighted Avg.    0,803    0,600    0,772      0,803    0,780      0,258    0,689     0,782     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 525  39 |   a = n
+  99  37 |   b = y
+
