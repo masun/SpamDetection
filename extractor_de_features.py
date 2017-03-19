@@ -26,6 +26,8 @@ class TweetFeatureExtractor :
         self.tweetFeatureCount["urls"] = 0
         self.tweetFeatureCount["len"] = 0
         self.tweetFeatureCount["numbers"] = 0
+        self.tweetFeatureCount["favorite_count"] = 0
+        self.tweetFeatureCount["retweet_count"] = 0
     
     def addFeature(self, feature) :
         self.tweetFeatureCount[feature] += 1
@@ -45,7 +47,10 @@ class TweetFeatureExtractor :
             len(re.findall(r'\s\d*[.,]?\d*\s', tweet))
         
     
-    def extractFeatures(self, tweetText) :
+    def extractFeatures(self, tweet) :
+        tweetText = tweet.text
+        self.tweetFeatureCount["favorite_count"] = tweet.favorite_count
+        self.tweetFeatureCount["retweet_count"] = tweet.retweet_count
         self.lenFeature(tweetText)
         self.urlFeature(tweetText)
         self.numbersFeature(tweetText)
@@ -75,10 +80,12 @@ class Tweet :
     """
     
     
-    def __init__(self, text, tweet_id) :
+    def __init__(self, text, tweet_id,favorite_count,retweet_count) :
         self.text = text
         self.tweet_id = tweet_id
         self.label = None
+        self.favorite_count = favorite_count
+        self.retweet_count = retweet_count
     
     def classify(self) :
         self.label = raw_input("Text: "+self.text+" \n\n Input label: (y/n) (s for stopping): ")
@@ -106,11 +113,11 @@ class TweetsBank :
         # cuyas keys son los nombres de cada columna del archivo
         for key,row in enumerate(input_file):
             if ("id" not in row) and ("tweet_id" not in row) :
-                tweet = Tweet(row["text"], str(key))
+                tweet = Tweet(row["text"], str(key),row["favorite_count"],row["retweet_count"])
             elif "tweet_id" in row :
-                tweet = Tweet(row["text"], row["tweet_id"])
+                tweet = Tweet(row["text"], row["tweet_id"],row["favorite_count"],row["retweet_count"])
             elif "id" in row :
-                tweet = Tweet(row["text"], row["id"])
+                tweet = Tweet(row["text"], row["id"],row["favorite_count"],row["retweet_count"])
             
             self.tweets.append(tweet)
         self.tweetGenerator = self.generateTweets()
@@ -141,11 +148,15 @@ class TweetsBank :
             newTweetsFile.write("urls,")
             newTweetsFile.write("len,")
             newTweetsFile.write("numbers,")
+            newTweetsFile.write("favorite_count,")
+            newTweetsFile.write("retweet_count,")
             newTweetsFile.write("spam")
+            
+            
             newTweetsFile.write("\n")
             for tweet_raw in self.tweets :
                 tweet = TweetFeatureExtractor(tweet_raw.tweet_id)
-                tweet.extractFeatures(tweet_raw.text)
+                tweet.extractFeatures(tweet_raw)
                 newTweetsFile.write(str(tweet.tweet_id))
                 newTweetsFile.write(",")
                 newTweetsFile.write(str(tweet.tweetFeatureCount["hashtags"]))
@@ -162,6 +173,11 @@ class TweetsBank :
                 newTweetsFile.write(",")
                 newTweetsFile.write(str(tweet.tweetFeatureCount["numbers"]))
                 newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["favorite_count"]))
+                newTweetsFile.write(",")
+                newTweetsFile.write(str(tweet.tweetFeatureCount["retweet_count"]))
+                newTweetsFile.write(",")
+                
                 if tweet_raw.label :
                     newTweetsFile.write(tweet_raw.label)
                 else :
