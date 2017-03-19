@@ -1,0 +1,98 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     featureVectorsDumpCaraotaDigitalCNNELaPatilla-weka.filters.unsupervised.attribute.Remove-R9-weka.filters.unsupervised.attribute.NumericToNominal-Rfirst-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-weka.filters.unsupervised.attribute.AddCluster-Wweka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -N 2 -A "weka.core.EuclideanDistance -R first-last" -I 500 -num-slots 1 -S 10-I1-weka.filters.unsupervised.instance.Randomize-S42-weka.filters.unsupervised.attribute.RenameNominalValues-R9-Ncluster1:n,cluster2:y-weka.filters.unsupervised.attribute.Remove-R1
+Instances:    3000
+Attributes:   8
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              cluster
+Test mode:    split 70.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                 Class
+Attribute            n       y
+                (0.59)  (0.41)
+===============================
+hashtags
+  mean           0.1238  0.0406
+  std. dev.      0.1594   0.096
+  weight sum       1775    1225
+  precision        0.25    0.25
+
+mentions
+  mean           0.0142  0.0238
+  std. dev.      0.0701  0.0797
+  weight sum       1775    1225
+  precision      0.1667  0.1667
+
+uppercase
+  mean           0.3085  0.1902
+  std. dev.      0.1176   0.086
+  weight sum       1775    1225
+  precision      0.0345  0.0345
+
+nonalpha
+  mean           0.5138  0.3043
+  std. dev.      0.1247  0.1093
+  weight sum       1775    1225
+  precision      0.0357  0.0357
+
+urls
+  mean           0.6043   0.317
+  std. dev.      0.1319  0.0909
+  weight sum       1775    1225
+  precision      0.3333  0.3333
+
+len
+  mean           0.7405  0.5006
+  std. dev.      0.1255  0.1782
+  weight sum       1775    1225
+  precision      0.0104  0.0104
+
+numbers
+  mean           0.0894  0.1135
+  std. dev.      0.1668  0.1865
+  weight sum       1775    1225
+  precision        0.25    0.25
+
+
+
+Time taken to build model: 0.01 seconds
+
+=== Evaluation on test split ===
+
+Time taken to test model on test split: 0.01 seconds
+
+=== Summary ===
+
+Correctly Classified Instances         870               96.6667 %
+Incorrectly Classified Instances        30                3.3333 %
+Kappa statistic                          0.9309
+Mean absolute error                      0.0619
+Root mean squared error                  0.1679
+Relative absolute error                 12.7928 %
+Root relative squared error             34.081  %
+Total Number of Instances              900     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,985    0,059    0,959      0,985    0,972      0,931    0,994     0,996     n
+                 0,941    0,015    0,978      0,941    0,959      0,931    0,994     0,993     y
+Weighted Avg.    0,967    0,041    0,967      0,967    0,967      0,931    0,994     0,995     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 519   8 |   a = n
+  22 351 |   b = y
+
