@@ -1,0 +1,155 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     featureVectorsEntrenamientoWithTopic-weka.filters.unsupervised.attribute.NumericToNominal-R1,9-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-unset-class-temporarily-weka.filters.unsupervised.attribute.MathExpression-Eexp(A)-V-R7-weka.filters.unsupervised.attribute.NominalToBinary-N-R9-weka.filters.unsupervised.attribute.Remove-R1
+Instances:    700
+Attributes:   18
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              topic_id=0
+              topic_id=1
+              topic_id=2
+              topic_id=3
+              topic_id=4
+              topic_id=5
+              topic_id=6
+              topic_id=7
+              topic_id=8
+              topic_id=9
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                 Class
+Attribute            n       y
+                 (0.8)   (0.2)
+===============================
+hashtags
+  mean           0.1147  0.0784
+  std. dev.      0.1848  0.1525
+  weight sum        564     136
+  precision      0.3333  0.3333
+
+mentions
+  mean           0.0674  0.0221
+  std. dev.      0.2265  0.1027
+  weight sum        564     136
+  precision         0.5     0.5
+
+uppercase
+  mean            0.257  0.2436
+  std. dev.      0.1351  0.1328
+  weight sum        564     136
+  precision      0.0435  0.0435
+
+nonalpha
+  mean           0.4255  0.4936
+  std. dev.      0.1595  0.1954
+  weight sum        564     136
+  precision      0.0417  0.0417
+
+urls
+  mean            0.719  0.7243
+  std. dev.      0.2847  0.2487
+  weight sum        564     136
+  precision         0.5     0.5
+
+len
+  mean           1.9773  1.9206
+  std. dev.      0.3729  0.3735
+  weight sum        564     136
+  precision      0.0193  0.0193
+
+numbers
+  mean            0.133  0.2157
+  std. dev.      0.2337  0.2757
+  weight sum        564     136
+  precision      0.3333  0.3333
+
+topic_id=0
+  f               524.0   103.0
+  t                42.0    35.0
+  [total]         566.0   138.0
+
+topic_id=1
+  f               468.0   119.0
+  t                98.0    19.0
+  [total]         566.0   138.0
+
+topic_id=2
+  f               481.0   119.0
+  t                85.0    19.0
+  [total]         566.0   138.0
+
+topic_id=3
+  f               554.0   131.0
+  t                12.0     7.0
+  [total]         566.0   138.0
+
+topic_id=4
+  f               464.0   132.0
+  t               102.0     6.0
+  [total]         566.0   138.0
+
+topic_id=5
+  f               499.0   131.0
+  t                67.0     7.0
+  [total]         566.0   138.0
+
+topic_id=6
+  f               548.0   126.0
+  t                18.0    12.0
+  [total]         566.0   138.0
+
+topic_id=7
+  f               489.0   105.0
+  t                77.0    33.0
+  [total]         566.0   138.0
+
+topic_id=8
+  f               526.0   135.0
+  t                40.0     3.0
+  [total]         566.0   138.0
+
+topic_id=9
+  f               533.0   133.0
+  t                33.0     5.0
+  [total]         566.0   138.0
+
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         549               78.4286 %
+Incorrectly Classified Instances       151               21.5714 %
+Kappa statistic                          0.2269
+Mean absolute error                      0.2827
+Root mean squared error                  0.3841
+Relative absolute error                 90.1265 %
+Root relative squared error             97.0815 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,901    0,699    0,842      0,901    0,871      0,232    0,732     0,912     n
+                 0,301    0,099    0,423      0,301    0,352      0,232    0,732     0,398     y
+Weighted Avg.    0,784    0,582    0,761      0,784    0,770      0,232    0,732     0,812     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 508  56 |   a = n
+  95  41 |   b = y
+
