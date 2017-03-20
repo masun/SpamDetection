@@ -34,7 +34,7 @@ writer9 = csv.writer(ofile9, delimiter=',')
 # Se leen los datos de los top topics.
 dict_datos_top = csv.DictReader(open("datasets/idTuitsWithTopTopicsEntrenamiento.csv", "r"))
 datos_topL =list(dict_datos_top) # Se transforma en una lista con los top_topics.
- 
+
 i = 0
 isHeader = True
 for row in reader:
@@ -51,23 +51,23 @@ for row in reader:
 		writer9.writerow(row)
 		isHeader = False
 	else:
-		if datos_topL[i]['top_topic_1'] == str(0): 
+		if datos_topL[i]['top_topic_1'] == str(0):
 			writer0.writerow(row)
-		elif datos_topL[i]['top_topic_1'] == str(1): 
+		elif datos_topL[i]['top_topic_1'] == str(1):
 			writer1.writerow(row)
-		elif datos_topL[i]['top_topic_1'] == str(2): 
+		elif datos_topL[i]['top_topic_1'] == str(2):
 			writer2.writerow(row)
-		elif datos_topL[i]['top_topic_1'] == str(3): 
+		elif datos_topL[i]['top_topic_1'] == str(3):
 			writer3.writerow(row)
-		elif datos_topL[i]['top_topic_1'] == str(4): 
+		elif datos_topL[i]['top_topic_1'] == str(4):
 			writer4.writerow(row)
-		elif datos_topL[i]['top_topic_1'] == str(5): 
+		elif datos_topL[i]['top_topic_1'] == str(5):
 			writer5.writerow(row)
-		if datos_topL[i]['top_topic_1'] == str(6): 
+		if datos_topL[i]['top_topic_1'] == str(6):
 			writer6.writerow(row)
-		elif datos_topL[i]['top_topic_1'] == str(7): 
+		elif datos_topL[i]['top_topic_1'] == str(7):
 			writer7.writerow(row)
-		elif datos_topL[i]['top_topic_1'] == str(8): 
+		elif datos_topL[i]['top_topic_1'] == str(8):
 			writer8.writerow(row)
 		elif datos_topL[i]['top_topic_1'] == str(9):
 			writer9.writerow(row)
