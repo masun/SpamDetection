@@ -1,0 +1,24 @@
+.select2-container{
+	width: 100% !important;
+}
+
+#table-section{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#tweets-table thead tr{
+	background-color: #5897fb;
+	color: white;
+}
+
+#title-form{
+	display: block;
+	text-align: center;
+}
+
+.miniloader{
+	margin: 0 auto;;
+    height: 100px;
+	background: url("../images/mini-loader.gif") center no-repeat;
+}
