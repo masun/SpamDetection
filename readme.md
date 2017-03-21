@@ -46,6 +46,7 @@ Cuando termine de cargar los últimos tuits de este usuario, va a mostrarlos en 
 considerado *Spam* por el modelo usado. Es verde si es considerado sano.
 
 Integrantes:
+------------
    * Leslie Rodrigues    10-10613
    * Edward Fernández    10-11121
    * Joel Rivas          11-10866
