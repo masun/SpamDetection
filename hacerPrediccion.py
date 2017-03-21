@@ -24,6 +24,13 @@ topics =   {0:'video chavista periodista sentada dtb'.split(" "),\
 
 
 def asignarTopico(tweetText):
+    """
+    #
+    #   @tweetText : texto del tuit
+    #
+    #   @return maxIndx : indice del topico mas cercano al tuit
+    #
+    """
     palabras = tweetText.split(" ")
     puntuacion = [0 for i in topics]
     maxIndx = 0
@@ -42,6 +49,18 @@ def asignarTopico(tweetText):
 
 
 def construirFeature(tweetText, tweet_id,favorite_count,retweet_count) :
+    """
+    #
+    #
+    #   @tweetText : texto del tuit
+    #   @tweet_id : id del tuit
+    #   @favorite_count : numero de favoritos del tuit
+    #   @retweet_count : numero de veces retuiteado
+    #
+    #   @return featureVector : diccionario con cada atributo del tuit
+    #                           sin ser preprocesado
+    #
+    """
     idTopico = asignarTopico(tweetText)
     tweet = Tweet(tweetText, tweet_id,favorite_count,retweet_count)
     extractor = TweetFeatureExtractor(tweet_id)
@@ -116,7 +135,6 @@ if __name__ == "__main__":
         jvm.start()
         jvm.start(system_cp=True, packages=True)
         main()
-        print construirFeature("Trump designa al teniente general McMaster como nuevo asesor presidencial https://t.co/8uyawU6Rae", 1,9,8)
     except Exception, e:
         print(traceback.format_exc())
     finally:
