@@ -7,6 +7,7 @@ from weka.classifiers import Classifier
 from weka.filters import Filter, MultiFilter
 from extractor_de_features import Tweet,TweetFeatureExtractor
 
+
 # Fuentes:
 # https://github.com/fracpete/python-weka-wrapper-examples/blob/master/src/wekaexamples/classifiers/output_class_distribution.py
 # http://pythonhosted.org/python-weka-wrapper/examples.html
@@ -86,7 +87,7 @@ def detectarSpam_(tuitsConDatos,modeloFilename) :
                                  status["retweet_count"])
         vectores.append(vector)
     
-    ifileName = "tweets/predictMe.csv"
+    ifileName = "predictMe.csv"
     #modelFilename = "tweets/modelos/naivebayes.model"
     #modelFilename = "tweets/modelos/usado_en_interfaz_knn.model"
     
@@ -138,7 +139,7 @@ def construirFeature(tweetText, tweet_id,favorite_count,retweet_count) :
     featureVector = extractor.getFetureVector()
     featureVector["tweet_id"] = tweet_id
     featureVector["topic_id"]=idTopico
-    featureVector["spam"] = 'n' if tweet_id % 2 else 'y'
+    featureVector["spam"] = 'n' if int(tweet_id) % 2 else 'y'
     return featureVector
 
 
@@ -189,24 +190,54 @@ def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
         result["distribution"] = str(dist.tolist())
         
         results.append(result)
-        print result
+        #print result
         
     return results
 
 def main() :
     
+    input_file = csv.DictReader(open("datasets/dumpCNNEE_APLICACION.csv", "r"))
+    tuits = []
+    ids = []
+    for row in input_file :
+        tuit = dict()
+        tuit["tweetText"] = row["text"]
+        tuit["tweet_id"] = row["id"]
+        tuit["favorite_count"] = row["favorite_count"]
+        tuit["retweet_count"] = row["retweet_count"]
+        tuits.append(tuit)
+        ids.append(row["id"])
+    
     ifileName = "predictMe.csv"
-    modelFilename = "naivebayes.model"
-    out = predictWithWeka(ifileName,modelFilename)
-    print out
+    modeloFilename = "naivebayes.model"
+    
+    predicciones = detectarSpam(tuits,modeloFilename)
+    
+    out = open("resultadosCNNEE_APLICACION.csv","w")
+    out.write("tweet_id,distribution1,distribution2,predicted\n")
+    for indx,tweet_id in enumerate(ids) :
+        out.write(str(tweet_id))
+        out.write(",")
+        distribution = ast.literal_eval(predicciones[indx]["distribution"])
+        out.write(str(distribution[0]))
+        out.write(",")
+        out.write(str(distribution[1]))
+        out.write(",")
+        out.write(str(predicciones[indx]["predicted"]))
+        out.write("\n")
+    out.close()
+    
 
 
 if __name__ == "__main__":
+    import ast
+    import csv
     try:
-        jvm.start()
-        jvm.start(system_cp=True, packages=True)
+        #jvm.start()
+        #jvm.start(system_cp=True, packages=True)
         main()
     except Exception, e:
         print(traceback.format_exc())
     finally:
-        jvm.stop()
+        #jvm.stop()
+        pass
