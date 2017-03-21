@@ -86,8 +86,8 @@ def detectarSpam_(tuitsConDatos) :
                                  status["retweet_count"])
         vectores.append(vector)
     
-    ifileName = "predictMe.csv"
-    modelFilename = "naivebayes.model"
+    ifileName = "tweets/predictMe.csv"
+    modelFilename = "tweets/naivebayes.model"
     
     guardarVectores(ifileName,vectores)
     predicciones = predictWithWeka(ifileName,modelFilename)
