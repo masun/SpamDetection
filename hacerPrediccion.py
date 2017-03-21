@@ -80,9 +80,9 @@ def guardarVectores(testCSVFilename,vectores) :
 def detectarSpam_(tuitsConDatos) :
     vectores = []
     for status in tuitsConDatos :
-        vector = construirFeature(status["tweetText", \
-                                 status["tweet_id",\
-                                 status["favorite_count",\
+        vector = construirFeature(status["tweetText"], \
+                                 status["tweet_id"],\
+                                 status["favorite_count"],\
                                  status["retweet_count"])
         vectores.append(vector)
     
