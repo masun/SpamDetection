@@ -1,0 +1,281 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     featureVectorsEntrenamientoWithTopic-weka.filters.unsupervised.attribute.NumericToNominal-Rfirst-weka.filters.unsupervised.attribute.NumericToNominal-R9-weka.filters.unsupervised.attribute.Remove-R1-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0
+Instances:    700
+Attributes:   9
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              topic_id
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+topic_id = 0 : n
+topic_id != 0 : n
+topic_id is missing : n
+
+Class distributions
+
+topic_id = 0
+n	y	
+0.5466666666666666	0.4533333333333333	
+topic_id != 0
+n	y	
+0.8368	0.1632	
+topic_id is missing
+n	y	
+0.8057142857142857	0.19428571428571428	
+
+
+Weight: 1.42
+
+Decision Stump
+
+Classifications
+
+topic_id = 0 : y
+topic_id != 0 : n
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 0
+n	y	
+0.2252747252747253	0.7747252747252747	
+topic_id != 0
+n	y	
+0.5528541226215643	0.44714587737843564	
+topic_id is missing
+n	y	
+0.49999999999999983	0.5000000000000001	
+
+
+Weight: 0.36
+
+Decision Stump
+
+Classifications
+
+nonalpha <= 0.62 : y
+nonalpha > 0.62 : y
+nonalpha is missing : y
+
+Class distributions
+
+nonalpha <= 0.62
+n	y	
+0.49447954405732064	0.5055204559426795	
+nonalpha > 0.62
+n	y	
+0.22547764212854604	0.7745223578714541	
+nonalpha is missing
+n	y	
+0.4380063356875813	0.5619936643124188	
+
+
+Weight: 0.25
+
+Decision Stump
+
+Classifications
+
+nonalpha <= 0.62 : n
+nonalpha > 0.62 : y
+nonalpha is missing : y
+
+Class distributions
+
+nonalpha <= 0.62
+n	y	
+0.5565506223925278	0.4434493776074722	
+nonalpha > 0.62
+n	y	
+0.2719466700539573	0.7280533299460427	
+nonalpha is missing
+n	y	
+0.4999999999999958	0.5000000000000041	
+
+
+Weight: 0.37
+
+Decision Stump
+
+Classifications
+
+topic_id = 4 : n
+topic_id != 4 : y
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 4
+n	y	
+0.7834090883898224	0.21659091161017768	
+topic_id != 4
+n	y	
+0.40646305222293433	0.5935369477770658	
+topic_id is missing
+n	y	
+0.4435322082350982	0.5564677917649017	
+
+
+Weight: 0.46
+
+Decision Stump
+
+Classifications
+
+len <= 0.5792079207920792 : y
+len > 0.5792079207920792 : n
+len is missing : n
+
+Class distributions
+
+len <= 0.5792079207920792
+n	y	
+0.4107131968828787	0.5892868031171213	
+len > 0.5792079207920792
+n	y	
+0.6192997022509418	0.38070029774905817	
+len is missing
+n	y	
+0.5354576397347194	0.46454236026528073	
+
+
+Weight: 0.44
+
+Decision Stump
+
+Classifications
+
+nonalpha <= 0.54 : n
+nonalpha > 0.54 : y
+nonalpha is missing : n
+
+Class distributions
+
+nonalpha <= 0.54
+n	y	
+0.5917223785154152	0.4082776214845849	
+nonalpha > 0.54
+n	y	
+0.359150400061331	0.6408495999386691	
+nonalpha is missing
+n	y	
+0.5151251426526579	0.48487485734734226	
+
+
+Weight: 0.44
+
+Decision Stump
+
+Classifications
+
+numbers <= 0.16666666666666666 : n
+numbers > 0.16666666666666666 : y
+numbers is missing : y
+
+Class distributions
+
+numbers <= 0.16666666666666666
+n	y	
+0.547063629774954	0.45293637022504596	
+numbers > 0.16666666666666666
+n	y	
+0.36103404552989027	0.6389659544701096	
+numbers is missing
+n	y	
+0.477237668328006	0.5227623316719939	
+
+
+Weight: 0.33
+
+Decision Stump
+
+Classifications
+
+mentions <= 0.75 : y
+mentions > 0.75 : n
+mentions is missing : y
+
+Class distributions
+
+mentions <= 0.75
+n	y	
+0.4444944910078859	0.5555055089921141	
+mentions > 0.75
+n	y	
+1.000000000000001	-1.019707151064271E-15	
+mentions is missing
+n	y	
+0.45572678461953886	0.544273215380461	
+
+
+Weight: 0.26
+
+Decision Stump
+
+Classifications
+
+mentions <= 0.75 : n
+mentions > 0.75 : n
+mentions is missing : n
+
+Class distributions
+
+mentions <= 0.75
+n	y	
+0.509118219285056	0.4908817807149439	
+mentions > 0.75
+n	y	
+0.9999999999999917	8.412874332054781E-15	
+mentions is missing
+n	y	
+0.517909827108252	0.4820901728917481	
+
+
+Weight: 0.07
+
+Number of performed Iterations: 10
+
+
+Time taken to build model: 0.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         569               81.2857 %
+Incorrectly Classified Instances       131               18.7143 %
+Kappa statistic                          0.0976
+Mean absolute error                      0.2766
+Root mean squared error                  0.3709
+Relative absolute error                 88.1665 %
+Root relative squared error             93.7328 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,991    0,926    0,816      0,991    0,895      0,177    0,731     0,915     n
+                 0,074    0,009    0,667      0,074    0,132      0,177    0,731     0,421     y
+Weighted Avg.    0,813    0,748    0,787      0,813    0,747      0,177    0,731     0,819     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 559   5 |   a = n
+ 126  10 |   b = y
+

@@ -1,0 +1,109 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     featureVectorsEntrenamientoWithTopic-weka.filters.unsupervised.attribute.NumericToNominal-Rfirst-weka.filters.unsupervised.attribute.NumericToNominal-R9-weka.filters.unsupervised.attribute.Remove-R1-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0
+Instances:    700
+Attributes:   9
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              topic_id
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                 Class
+Attribute            n       y
+                 (0.8)   (0.2)
+===============================
+hashtags
+  mean           0.1147  0.0784
+  std. dev.      0.1848  0.1525
+  weight sum        564     136
+  precision      0.3333  0.3333
+
+mentions
+  mean           0.0674  0.0221
+  std. dev.      0.2265  0.1027
+  weight sum        564     136
+  precision         0.5     0.5
+
+uppercase
+  mean            0.257  0.2436
+  std. dev.      0.1351  0.1328
+  weight sum        564     136
+  precision      0.0435  0.0435
+
+nonalpha
+  mean           0.4255  0.4936
+  std. dev.      0.1595  0.1954
+  weight sum        564     136
+  precision      0.0417  0.0417
+
+urls
+  mean            0.719  0.7243
+  std. dev.      0.2847  0.2487
+  weight sum        564     136
+  precision         0.5     0.5
+
+len
+  mean           0.6617  0.6324
+  std. dev.      0.2001  0.1951
+  weight sum        564     136
+  precision      0.0112  0.0112
+
+numbers
+  mean            0.133  0.2157
+  std. dev.      0.2337  0.2757
+  weight sum        564     136
+  precision      0.3333  0.3333
+
+topic_id
+  0                42.0    35.0
+  1                98.0    19.0
+  2                85.0    19.0
+  3                12.0     7.0
+  4               102.0     6.0
+  5                67.0     7.0
+  6                18.0    12.0
+  7                77.0    33.0
+  8                40.0     3.0
+  9                33.0     5.0
+  [total]         574.0   146.0
+
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         554               79.1429 %
+Incorrectly Classified Instances       146               20.8571 %
+Kappa statistic                          0.2208
+Mean absolute error                      0.2843
+Root mean squared error                  0.3818
+Relative absolute error                 90.6301 %
+Root relative squared error             96.4966 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,917    0,728    0,839      0,917    0,876      0,230    0,732     0,911     n
+                 0,272    0,083    0,440      0,272    0,336      0,230    0,732     0,397     y
+Weighted Avg.    0,791    0,603    0,762      0,791    0,771      0,230    0,732     0,811     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 517  47 |   a = n
+  99  37 |   b = y
+
