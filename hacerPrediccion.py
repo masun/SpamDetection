@@ -10,6 +10,40 @@ from weka.filters import Filter, MultiFilter
 # https://github.com/fracpete/python-weka-wrapper-examples/blob/master/src/wekaexamples/classifiers/output_class_distribution.py
 # http://pythonhosted.org/python-weka-wrapper/examples.html
 
+topics =   {0:'video chavista periodista sentada dtb'.split(" "),\
+            1:'venezuela vivo cnn soyfdelrincon senal'.split(" "),\
+            2:'trump donald mes opinion mexico'.split(" "),\
+            3:'muerte dolares angeles prostitutas venden'.split(" "),\
+            4:'ecuador vuelta cne lomasvisto resultados'.split(" "),\
+            5:'uu ee indocumentados inmigrantes aissami'.split(" "),\
+            6:'sports illustrated 2017 rubia portada'.split(" "),\
+            7:'fotos lomasvisto anos accesorios orgullo'.split(" "),\
+            8:'muere brutal embarazada companeras recibir'.split(" "),\
+            9:'jong kim nam muerte corea'.split(" ")}
+
+
+def asignarTopico(tweetText):
+    palabras = tweetText.split(" ")
+    puntuacion = [0 for i in topics]
+    maxIndx = 0
+    maxim = 0
+    for indxT in topics :
+        for palabra in palabras :
+            for topWord in topics[indxT]:
+                if topWord == palabra :
+                    puntuacion[indxT] += 1
+                    if puntuacion[indxT] > maxim :
+                        maxim = puntuacion[indxT]
+                        maxIndx = indxT
+                
+    return maxIndx,maxim
+
+def construirFeature(tweetText, numRetuits, numFavs) :
+    idTopico = asignarTopico(tweetText)
+    featureVector = dict()
+    
+    return featureVector
+
 
 def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
     """
@@ -64,7 +98,6 @@ def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
 
 def main() :
     
-    #ifileName = "featureVectorsEntrenamientoWithTopicRetuitFav_preprocesado.csv"
     ifileName = "predictMe.csv"
     modelFilename = "naivebayes.model"
     out = predictWithWeka(ifileName,modelFilename)
