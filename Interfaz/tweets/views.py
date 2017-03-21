@@ -33,11 +33,14 @@ def get_tweets_for_account(request):
 		tuitsConDatos = dict()
 		tuitsConDatos["tweetText"] = tweet.text
 		tuitsConDatos["tweet_id"] = tweet.id
-		tuitsConDatos["favorite_count"] = "1" if tweet.favorited else "0"
+		tuitsConDatos["favorite_count"] = tweet.retweet_count #"1" if tweet.favorited else "0"
 		tuitsConDatos["retweet_count"] = tweet.retweet_count
 		listaTuitsConDatos.append(tuitsConDatos)
 	
-	predicciones = detectarSpam(listaTuitsConDatos)
+	#modeloFilename = "tweets/modelos/naivebayes.model"
+	modeloFilename = "tweets/modelos/usado_en_interfaz_knn.model"
+	
+	predicciones = detectarSpam(listaTuitsConDatos,modeloFilename)
 	
 	odd=True
 	data=[]

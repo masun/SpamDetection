@@ -77,7 +77,7 @@ def guardarVectores(testCSVFilename,vectores) :
             ofile.write("\n")
         ofile.close()
 
-def detectarSpam_(tuitsConDatos) :
+def detectarSpam_(tuitsConDatos,modeloFilename) :
     vectores = []
     for status in tuitsConDatos :
         vector = construirFeature(status["tweetText"], \
@@ -87,13 +87,14 @@ def detectarSpam_(tuitsConDatos) :
         vectores.append(vector)
     
     ifileName = "tweets/predictMe.csv"
-    modelFilename = "tweets/naivebayes.model"
+    #modelFilename = "tweets/modelos/naivebayes.model"
+    #modelFilename = "tweets/modelos/usado_en_interfaz_knn.model"
     
     guardarVectores(ifileName,vectores)
-    predicciones = predictWithWeka(ifileName,modelFilename)
+    predicciones = predictWithWeka(ifileName,modeloFilename)
     return predicciones
 
-def detectarSpam(tuitsConDatos):
+def detectarSpam(tuitsConDatos,modeloFilename):
     """
     #
     #   @tuitsConDatos : lista de diccionarios status con los indices
@@ -108,7 +109,7 @@ def detectarSpam(tuitsConDatos):
     try:
         jvm.start()
         jvm.start(system_cp=True, packages=True)
-        predicciones = detectarSpam_(tuitsConDatos)
+        predicciones = detectarSpam_(tuitsConDatos,modeloFilename)
         
     except Exception, e:
         print(traceback.format_exc())
