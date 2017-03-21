@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import tweepy
 from hacerPrediccion import detectarSpam
+import ast
+
 
 consumer_key =	"SS8JBcQRG5C6SRcINR6fLsmRb"
 consumer_secret = "zr10cRxyHVXlElJFXj5EfpYYD3J0RKtQpqPbrq8EGNdnux9V1Y"
@@ -22,7 +24,7 @@ def index(request):
 @csrf_exempt
 def get_tweets_for_account(request):
 	account = request.POST.get('account', None)
-
+	print account
 	try:
 		stuff = api.user_timeline(screen_name = account, count = 10, include_rts = True)
 	except tweepy.TweepError as e:
@@ -33,7 +35,7 @@ def get_tweets_for_account(request):
 		tuitsConDatos = dict()
 		tuitsConDatos["tweetText"] = tweet.text
 		tuitsConDatos["tweet_id"] = tweet.id
-		tuitsConDatos["favorite_count"] = tweet.retweet_count #"1" if tweet.favorited else "0"
+		tuitsConDatos["favorite_count"] = "1.0" if tweet.favorited else "0.0"
 		tuitsConDatos["retweet_count"] = tweet.retweet_count
 		listaTuitsConDatos.append(tuitsConDatos)
 	
@@ -47,7 +49,14 @@ def get_tweets_for_account(request):
 	for indx,tweet in enumerate(stuff):
 		if indx >= len(predicciones) :
 			break
-		data.append({'text':tweet.text,'probabilidad':0.0,'spam':predicciones[indx]["predicted"] == "y"})
+		
+		distribucion = ast.literal_eval(predicciones[indx]["distribution"])
+		probabilidad = distribucion[0] if predicciones[indx]["predicted"] == "y" \
+							else distribucion[1]
+		
+		data.append({'text':tweet.text,
+					 'probabilidad':probabilidad,
+					 'spam':predicciones[indx]["predicted"] == "y"})
 		
 
 	return HttpResponse(json.dumps(data))

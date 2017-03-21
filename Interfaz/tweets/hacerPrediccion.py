@@ -161,7 +161,7 @@ def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
     """
     loader = Loader(classname="weka.core.converters.CSVLoader")
     cls = Classifier(jobject=serialization.read(modelFilename))
-    print(cls)
+    #print(cls)
     
     data = loader.load_file(csvFilenameWithInputToPredict)
     data.class_is_last()
