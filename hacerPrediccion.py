@@ -5,6 +5,7 @@ from weka.core.converters import Loader
 import weka.core.serialization as serialization
 from weka.classifiers import Classifier
 from weka.filters import Filter, MultiFilter
+from extractor_de_features import Tweet,TweetFeatureExtractor
 
 # Fuentes:
 # https://github.com/fracpete/python-weka-wrapper-examples/blob/master/src/wekaexamples/classifiers/output_class_distribution.py
@@ -36,12 +37,18 @@ def asignarTopico(tweetText):
                         maxim = puntuacion[indxT]
                         maxIndx = indxT
                 
-    return maxIndx,maxim
+    return maxIndx
 
-def construirFeature(tweetText, numRetuits, numFavs) :
+
+
+def construirFeature(tweetText, tweet_id,favorite_count,retweet_count) :
     idTopico = asignarTopico(tweetText)
-    featureVector = dict()
-    
+    tweet = Tweet(tweetText, tweet_id,favorite_count,retweet_count)
+    extractor = TweetFeatureExtractor(tweet_id)
+    extractor.extractFeatures(tweet)
+    featureVector = extractor.getFetureVector()
+    featureVector["topic_id"]=idTopico
+    featureVector["spam"] = 'n' if tweet_id % 2 else 'y'
     return featureVector
 
 
@@ -109,6 +116,7 @@ if __name__ == "__main__":
         jvm.start()
         jvm.start(system_cp=True, packages=True)
         main()
+        print construirFeature("Trump designa al teniente general McMaster como nuevo asesor presidencial https://t.co/8uyawU6Rae", 1,9,8)
     except Exception, e:
         print(traceback.format_exc())
     finally:

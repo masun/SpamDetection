@@ -67,7 +67,10 @@ class TweetFeatureExtractor :
                 
             
             
-        
+    def getFetureVector(self):
+        return self.tweetFeatureCount
+    
+    
 
 
 
@@ -201,28 +204,29 @@ class TweetsBank :
         
         self.saveTweets(featuresCSVFilename)
 
-
-# Se abre el archivo generado por birdwatcher
-with open("datasets/dumpCaraotaDigitalCNNELaPatilla.csv","r") as f :
-    l = f.readlines()
-    f.close()
-
-# Se desordenan sus lineas
-ran = l[1:]
-shuffle(ran)
-header = [l[0]]
-
-# Se guardan las lineas desordenadas
-with open("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv","w") as f :
-    f.writelines(header + ran)
-    f.close()
-
-# Se lee el archivo fuente y se crea un banco de tuits
-twitterBankOfVen = TweetsBank("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv")
-
-# Se clasifican manualmente algunos de ellos
-twitterBankOfVen.classifyTweets()
-
-# Se calculan los features y se guarda todo junto con la clasificacion manual
-# de arriba
-twitterBankOfVen.saveTweets("datasets/featureVectorsDumpCaraotaDigitalCNNELaPatilla.csv")
+if __name__ == "__main__":
+    
+    # Se abre el archivo generado por birdwatcher
+    with open("datasets/dumpCaraotaDigitalCNNELaPatilla.csv","r") as f :
+        l = f.readlines()
+        f.close()
+    
+    # Se desordenan sus lineas
+    ran = l[1:]
+    shuffle(ran)
+    header = [l[0]]
+    
+    # Se guardan las lineas desordenadas
+    with open("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv","w") as f :
+        f.writelines(header + ran)
+        f.close()
+    
+    # Se lee el archivo fuente y se crea un banco de tuits
+    twitterBankOfVen = TweetsBank("datasets/dumpCaraotaDigitalCNNELaPatillaRANDOM.csv")
+    
+    # Se clasifican manualmente algunos de ellos
+    twitterBankOfVen.classifyTweets()
+    
+    # Se calculan los features y se guarda todo junto con la clasificacion manual
+    # de arriba
+    twitterBankOfVen.saveTweets("datasets/featureVectorsDumpCaraotaDigitalCNNELaPatilla.csv")
