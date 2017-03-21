@@ -83,7 +83,9 @@ def detectarSpam(tuitsConDatos) :
     #   @tuitsConDatos : lista de diccionarios status con los indices
     #                    tweetText, tweet_id, favorite_count y retweet_count
     #
-    #   @return predicciones : lista de predicciones por cada tuit de input
+    #   @return predicciones : lista de predicciones por cada tuit de input.
+    #                           Cada prediccion es un diccionario con los indices
+    #                           index, actual, predicted, error y distribution
     #
     """
     vectores = []
