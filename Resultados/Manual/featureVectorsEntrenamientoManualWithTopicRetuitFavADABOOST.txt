@@ -1,0 +1,283 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     featureVectorsEntrenamientoWithTopicRetuitFav-weka.filters.unsupervised.attribute.Remove-R1-weka.filters.unsupervised.attribute.NumericToNominal-R8,11-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0
+Instances:    700
+Attributes:   11
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              topic_id
+              favorite_count
+              retweet_count
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+retweet_count <= 8.066374740723669E-4 : n
+retweet_count > 8.066374740723669E-4 : n
+retweet_count is missing : n
+
+Class distributions
+
+retweet_count <= 8.066374740723669E-4
+n	y	
+0.6324786324786325	0.36752136752136755	
+retweet_count > 8.066374740723669E-4
+n	y	
+0.8927038626609443	0.1072961373390558	
+retweet_count is missing
+n	y	
+0.8057142857142857	0.19428571428571428	
+
+
+Weight: 1.42
+
+Decision Stump
+
+Classifications
+
+retweet_count <= 8.066374740723669E-4 : y
+retweet_count > 8.066374740723669E-4 : n
+retweet_count is missing : n
+
+Class distributions
+
+retweet_count <= 8.066374740723669E-4
+n	y	
+0.2932742743909546	0.7067257256090455	
+retweet_count > 8.066374740723669E-4
+n	y	
+0.6673586864206869	0.33264131357931315	
+retweet_count is missing
+n	y	
+0.5000000000000034	0.49999999999999645	
+
+
+Weight: 0.78
+
+Decision Stump
+
+Classifications
+
+nonalpha <= 0.62 : n
+nonalpha > 0.62 : y
+nonalpha is missing : y
+
+Class distributions
+
+nonalpha <= 0.62
+n	y	
+0.5391079628844464	0.4608920371155535	
+nonalpha > 0.62
+n	y	
+0.24342090671211902	0.7565790932878811	
+nonalpha is missing
+n	y	
+0.47744808395013383	0.5225519160498662	
+
+
+Weight: 0.34
+
+Decision Stump
+
+Classifications
+
+topic_id = 0 : y
+topic_id != 0 : y
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 0
+n	y	
+0.20831694624949618	0.7916830537505039	
+topic_id != 0
+n	y	
+0.4712470543062967	0.5287529456937032	
+topic_id is missing
+n	y	
+0.4261062786129814	0.5738937213870186	
+
+
+Weight: 0.3
+
+Decision Stump
+
+Classifications
+
+topic_id = 0 : y
+topic_id != 0 : n
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 0
+n	y	
+0.26166260315829726	0.7383373968417027	
+topic_id != 0
+n	y	
+0.5455276996153964	0.4544723003846037	
+topic_id is missing
+n	y	
+0.49999999999999983	0.5000000000000002	
+
+
+Weight: 0.31
+
+Decision Stump
+
+Classifications
+
+len <= 0.5792079207920792 : y
+len > 0.5792079207920792 : n
+len is missing : y
+
+Class distributions
+
+len <= 0.5792079207920792
+n	y	
+0.32866838329931547	0.6713316167006846	
+len > 0.5792079207920792
+n	y	
+0.5256737861937724	0.47432621380622764	
+len is missing
+n	y	
+0.44682875158266383	0.5531712484173362	
+
+
+Weight: 0.34
+
+Decision Stump
+
+Classifications
+
+nonalpha <= 0.54 : y
+nonalpha > 0.54 : y
+nonalpha is missing : y
+
+Class distributions
+
+nonalpha <= 0.54
+n	y	
+0.496766674928114	0.5032333250718859	
+nonalpha > 0.54
+n	y	
+0.2962950277397925	0.7037049722602076	
+nonalpha is missing
+n	y	
+0.42804215461459694	0.5719578453854031	
+
+
+Weight: 0.29
+
+Decision Stump
+
+Classifications
+
+nonalpha <= 0.54 : n
+nonalpha > 0.54 : y
+nonalpha is missing : y
+
+Class distributions
+
+nonalpha <= 0.54
+n	y	
+0.5687885385335385	0.43121146146646144	
+nonalpha > 0.54
+n	y	
+0.36004705646930474	0.6399529435306952	
+nonalpha is missing
+n	y	
+0.49999999999999994	0.5000000000000001	
+
+
+Weight: 0.37
+
+Decision Stump
+
+Classifications
+
+topic_id = 4 : n
+topic_id != 4 : y
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 4
+n	y	
+0.741375309280309	0.2586246907196911	
+topic_id != 4
+n	y	
+0.44076760788882835	0.5592323921111716	
+topic_id is missing
+n	y	
+0.4674454970703388	0.5325545029296612	
+
+
+Weight: 0.3
+
+Decision Stump
+
+Classifications
+
+mentions <= 0.75 : n
+mentions > 0.75 : n
+mentions is missing : n
+
+Class distributions
+
+mentions <= 0.75
+n	y	
+0.5221031534300056	0.4778968465699944	
+mentions > 0.75
+n	y	
+0.9999999999999772	2.269453069021272E-14	
+mentions is missing
+n	y	
+0.5301454786429333	0.46985452135706673	
+
+
+Weight: 0.12
+
+Number of performed Iterations: 10
+
+
+Time taken to build model: 0.04 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         574               82      %
+Incorrectly Classified Instances       126               18      %
+Kappa statistic                          0.2491
+Mean absolute error                      0.2609
+Root mean squared error                  0.3622
+Relative absolute error                 83.1713 %
+Root relative squared error             91.5424 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,963    0,772    0,838      0,963    0,896      0,288    0,760     0,922     n
+                 0,228    0,037    0,596      0,228    0,330      0,288    0,760     0,466     y
+Weighted Avg.    0,820    0,629    0,791      0,820    0,786      0,288    0,760     0,833     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 543  21 |   a = n
+ 105  31 |   b = y
+
