@@ -22,6 +22,7 @@ topics =   {0:'video chavista periodista sentada dtb'.split(" "),\
             8:'muere brutal embarazada companeras recibir'.split(" "),\
             9:'jong kim nam muerte corea'.split(" ")}
 
+header = "tweet_id,hashtags,mentions,uppercase,nonalpha,urls,len,numbers,topic_id,favorite_count,retweet_count,spam\n"
 
 def asignarTopico(tweetText):
     """
@@ -46,6 +47,59 @@ def asignarTopico(tweetText):
                 
     return maxIndx
 
+def guardarVectores(testCSVFilename,vectores) :
+    with open(testCSVFilename,"w") as ofile:
+        ofile.write(header)
+        for vector in vectores :
+            ofile.write(vector["tweet_id"])
+            ofile.write(",")
+            ofile.write(vector["hashtags"])
+            ofile.write(",")
+            ofile.write(vector["mentions"])
+            ofile.write(",")
+            ofile.write(vector["uppercase"])
+            ofile.write(",")
+            ofile.write(vector["nonalpha"])
+            ofile.write(",")
+            ofile.write(vector["urls"])
+            ofile.write(",")
+            ofile.write(vector["len"])
+            ofile.write(",")
+            ofile.write(vector["numbers"])
+            ofile.write(",")
+            ofile.write(vector["topic_id"])
+            ofile.write(",")
+            ofile.write(vector["favorite_count"])
+            ofile.write(",")
+            ofile.write(vector["retweet_count"])
+            ofile.write(",")
+            ofile.write(vector["spam"])
+            ofile.write("\n")
+        ofile.close()
+
+def detectarSpam(tuitsConDatos) :
+    """
+    #
+    #   @tuitsConDatos : lista de diccionarios status con los indices
+    #                    tweetText, tweet_id, favorite_count y retweet_count
+    #
+    #   @return predicciones : lista de predicciones por cada tuit de input
+    #
+    """
+    vectores = []
+    for status in tuitsConDatos :
+        vector = construirFeature(status["tweetText", \
+                                 status["tweet_id",\
+                                 status["favorite_count",\
+                                 status["retweet_count"])
+        vectores.append(vector)
+    
+    ifileName = "predictMe.csv"
+    modelFilename = "naivebayes.model"
+    
+    guardarVectores(ifileName,vectores)
+    predicciones = predictWithWeka(ifileName,modelFilename)
+    return predicciones
 
 
 def construirFeature(tweetText, tweet_id,favorite_count,retweet_count) :
