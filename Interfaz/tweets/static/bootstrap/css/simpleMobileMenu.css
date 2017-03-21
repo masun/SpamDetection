@@ -1,0 +1,118 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700);
+
+html{
+	margin:0px;
+	padding:0px;
+	font-family:'Source Sans Pro',sans-serif;
+	box-sizing:border-box
+}
+*,*:before,*:after{box-sizing:inherit}
+.cf:before,.cf:after{content:" ";display:table}
+.cf:after{clear:both}
+.cf{*zoom:1}
+
+body{
+	margin:0px;
+	padding:0px;
+	font-family:'Source Sans Pro',sans-serif}
+.smobitrigger,.mnuclose{display:none}
+
+header{background: #222;/*#000235;*//*#28180B;*/border-color:#080808;opacity: 0.9;z-index: 99999;width: 100%}
+
+.logo{float:left}
+
+.navigation{float:right}
+
+.navigation nav ul{padding:0px;margin:0px;list-style:none}
+
+.navigation nav ul li{display:inline-block;margin:-1px;}
+.navigation nav ul li a{
+	height: 45px;
+	color:#fff;
+	font-weight:600;
+	display:inline-block;
+	text-transform:uppercase;
+	text-decoration:none;
+	padding:15px 20px;
+	margin-bottom: 0px;
+	transition:0.5s;-webkit-transition:0.5s;-moz-transition:0.5s;-ms-transition:0.5s;-o-transition:0.5s}
+
+.navigation nav ul li a:last-child{
+	margin-right: 20px;
+}
+
+
+
+.navigation nav ul li a{
+	color:#818181;
+}
+
+.navigation nav ul li a:focus{
+	color: #fff;
+	border-bottom: 2px solid #fff;
+}
+
+.navigation nav ul li a:hover{
+	border-bottom: 2px solid #A9A9A9; 
+	color:#A9A9A9;
+	/*
+	background-color:black;
+	color:#fff;
+		text-shadow: 2px 2px #28180B;
+	
+	-webkit-box-shadow: inset 0px 2px 105px -16px rgba(255,255,255,1);
+	-moz-box-shadow: inset 0px 2px 105px -16px rgba(255,255,255,1);
+	box-shadow: inset 0px 2px 105px -16px rgba(255,255,255,1);
+*/
+}
+
+
+
+@media all and (max-width:926px){
+.smobitrigger,.mnuclose{display:inline-block}
+.smobitrigger{
+	color:#fff;
+	font-size:30px;
+	line-height:12px;
+	padding:10px
+}
+.mnuclose{
+	font-size:20px;
+	padding:10px 20px;
+	width:100%;
+	background:rgba(0,0,0,0.18)}
+.smobitrigger span,.mnuclose span{
+	font:0/0 a;
+	text-shadow:none;
+	color:transparent}
+.navigation nav ul{
+	padding-bottom:40px;
+	overflow-y:auto}
+.navigation nav ul li,
+.navigation nav ul li a{width:100%}
+.navigation nav ul li a{
+	padding-top:5px;
+	padding-bottom:5px}
+.navigation nav ul li a:hover{
+	background:black}
+.mobimenu{
+	list-style:none;
+	padding:20px;
+	margin:0px;
+	width:210px;
+	position:fixed;
+	height:100%;
+	top:0px;
+	right:-250px}
+.mnuopn{
+	right:0px!important}
+
+.ovrActv{
+	position:fixed;
+	background:rgba(0,0,0,0.79);
+	width:100%;
+	height:100%;
+	z-index:9998;
+	transition:0.5s;-webkit-transition:0.5s;-moz-transition:0.5s;-ms-transition:0.5s;-o-transition:0.5s
+}
+}
