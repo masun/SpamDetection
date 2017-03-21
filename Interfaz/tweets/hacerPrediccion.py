@@ -44,7 +44,7 @@ def asignarTopico(tweetText):
                     if puntuacion[indxT] > maxim :
                         maxim = puntuacion[indxT]
                         maxIndx = indxT
-                
+
     return maxIndx
 
 def guardarVectores(testCSVFilename,vectores) :
@@ -85,11 +85,11 @@ def detectarSpam_(tuitsConDatos,modeloFilename) :
                                  status["favorite_count"],\
                                  status["retweet_count"])
         vectores.append(vector)
-    
+
     ifileName = "tweets/predictMe.csv"
     #modelFilename = "tweets/modelos/naivebayes.model"
     #modelFilename = "tweets/modelos/usado_en_interfaz_knn.model"
-    
+
     guardarVectores(ifileName,vectores)
     predicciones = predictWithWeka(ifileName,modeloFilename)
     return predicciones
@@ -110,13 +110,13 @@ def detectarSpam(tuitsConDatos,modeloFilename):
         jvm.start()
         jvm.start(system_cp=True, packages=True)
         predicciones = detectarSpam_(tuitsConDatos,modeloFilename)
-        
+        return predicciones
     except Exception, e:
+        print("RESTART")
         print(traceback.format_exc())
     finally:
         jvm.stop()
-        return predicciones
-    
+
 
 def construirFeature(tweetText, tweet_id,favorite_count,retweet_count) :
     """
@@ -153,7 +153,7 @@ def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
     #   @csvFilenameWithInputToPredict : nombre del archivo csv con las instancias
     #                                   a predecir.
     #
-    #   @modelFilename : nombre del archivo de modelo generado por weka y 
+    #   @modelFilename : nombre del archivo de modelo generado por weka y
     #                    compatible con el archivo csv de entrada
     #
     #   @return results : lista de diccionarios con los siguientes indices
@@ -162,10 +162,10 @@ def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
     loader = Loader(classname="weka.core.converters.CSVLoader")
     cls = Classifier(jobject=serialization.read(modelFilename))
     #print(cls)
-    
+
     data = loader.load_file(csvFilenameWithInputToPredict)
     data.class_is_last()
-    
+
     multi = MultiFilter()
     remove = Filter(classname="weka.filters.unsupervised.attribute.Remove", options=["-R", "first"])
     numericToNom = Filter(classname="weka.filters.unsupervised.attribute.NumericToNominal", options=["-R","8,11"])
@@ -173,28 +173,28 @@ def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
     multi.filters = [remove, numericToNom, normalize]
     multi.inputformat(data)
     test = multi.filter(data)
-    
-    
+
+
     results = []
     for index, inst in enumerate(test):
         result = dict()
-        
+
         pred = cls.classify_instance(inst)
         dist = cls.distribution_for_instance(inst)
-        
+
         result["index"] = index+1
         result["actual"] = inst.get_string_value(inst.class_index)
         result["predicted"] = inst.class_attribute.value(int(pred))
         result["error"] = "yes" if pred != inst.get_value(inst.class_index) else "no"
         result["distribution"] = str(dist.tolist())
-        
+
         results.append(result)
         print result
-        
+
     return results
 
 def main() :
-    
+
     ifileName = "predictMe.csv"
     modelFilename = "naivebayes.model"
     out = predictWithWeka(ifileName,modelFilename)
