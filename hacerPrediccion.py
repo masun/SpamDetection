@@ -77,17 +77,7 @@ def guardarVectores(testCSVFilename,vectores) :
             ofile.write("\n")
         ofile.close()
 
-def detectarSpam(tuitsConDatos) :
-    """
-    #
-    #   @tuitsConDatos : lista de diccionarios status con los indices
-    #                    tweetText, tweet_id, favorite_count y retweet_count
-    #
-    #   @return predicciones : lista de predicciones por cada tuit de input.
-    #                           Cada prediccion es un diccionario con los indices
-    #                           index, actual, predicted, error y distribution
-    #
-    """
+def detectarSpam_(tuitsConDatos) :
     vectores = []
     for status in tuitsConDatos :
         vector = construirFeature(status["tweetText", \
@@ -103,6 +93,28 @@ def detectarSpam(tuitsConDatos) :
     predicciones = predictWithWeka(ifileName,modelFilename)
     return predicciones
 
+def detectarSpam(tuitsConDatos):
+    """
+    #
+    #   @tuitsConDatos : lista de diccionarios status con los indices
+    #                    tweetText, tweet_id, favorite_count y retweet_count
+    #
+    #   @return predicciones : lista de predicciones por cada tuit de input.
+    #                           Cada prediccion es un diccionario con los indices
+    #                           index, actual, predicted, error y distribution
+    #
+    """
+    
+    try:
+        jvm.start()
+        jvm.start(system_cp=True, packages=True)
+        predicciones = detectarSpam_(tuitsConDatos)
+        return predicciones
+    except Exception, e:
+        print(traceback.format_exc())
+    finally:
+        jvm.stop()
+    
 
 def construirFeature(tweetText, tweet_id,favorite_count,retweet_count) :
     """
