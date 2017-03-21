@@ -1,0 +1,4 @@
+tweet_id,hashtags,mentions,uppercase,nonalpha,urls,len,numbers,topic_id,favorite_count,retweet_count,spam
+11123,0,0,10,15,2,132,0,8,262,337,n
+11415,0,0,12,17,2,118,0,2,37,33,n
+11161,0,0,12,19,2,109,0,2,47,35,y

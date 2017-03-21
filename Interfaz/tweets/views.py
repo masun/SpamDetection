@@ -3,6 +3,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import tweepy
+from hacerPrediccion import detectarSpam
 
 consumer_key =	"SS8JBcQRG5C6SRcINR6fLsmRb"
 consumer_secret = "zr10cRxyHVXlElJFXj5EfpYYD3J0RKtQpqPbrq8EGNdnux9V1Y"
@@ -26,14 +27,24 @@ def get_tweets_for_account(request):
 		stuff = api.user_timeline(screen_name = account, count = 10, include_rts = True)
 	except tweepy.TweepError as e:
 	    return HttpResponse(json.dumps([]))
-
+	
+	listaTuitsConDatos = []
+	for tweet in stuff :
+		tuitsConDatos = dict()
+		tuitsConDatos["tweetText"] = tweet.text
+		tuitsConDatos["tweet_id"] = tweet.id
+		tuitsConDatos["favorite_count"] = "1" if tweet.favorited else "0"
+		tuitsConDatos["retweet_count"] = tweet.retweet_count
+		listaTuitsConDatos.append(tuitsConDatos)
+	
+	predicciones = detectarSpam(listaTuitsConDatos)
+	
 	odd=True
 	data=[]
-	for tweet in stuff:
-		if not(odd):
-			data.append({'text':tweet.text,'probabilidad':0.0,'spam':True})
-		else:
-			data.append({'text':tweet.text,'probabilidad':0.0,'spam':False})
-		odd=not(odd)
+	for indx,tweet in enumerate(stuff):
+		if indx >= len(predicciones) :
+			break
+		data.append({'text':tweet.text,'probabilidad':0.0,'spam':predicciones[indx]["predicted"] == "y"})
+		
 
 	return HttpResponse(json.dumps(data))
