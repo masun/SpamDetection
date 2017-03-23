@@ -33,3 +33,19 @@ datos_separados/
     al tópico como se muestra en topicsWithTopWords.csv y 
     idTuitsWithTopTopicsEntrenamiento.csv
 
+originales/
+    Este directorio contiene los datasets originales sin preprocesar y sin los
+    atributos
+
+con_atributos_adicionales/
+    Aquí se encuentran los datasets con los atributos adicionales que no 
+    dependen estrictamente del texto o se calculan de manera distina con
+    los tópicos
+
+
+Comentarios:
+
+    DATASETS ETIQUETADOS AUTOMÁTICAMENTE:
+        Los datasets que tengan en su nombre las palabras 'filtro' 'cluster' fueron
+        etiquetados de manera automática con Weka
+        
