@@ -45,6 +45,15 @@ de noticias en el buscador. Por ejemplo: @CNNEE.
 Cuando termine de cargar los últimos tuits de este usuario, va a mostrarlos en una tabla. Un tuit es rojo cuando es 
 considerado *Spam* por el modelo usado. Es verde si es considerado sano.
 
+
+Limitaciones
+-------------
+
+Los issues relacionados con el Javabridge de python afectan la librería que se usa desde Python para invocar las
+funciones de Weka. Esto impide que se use de manera correcta con Django cada vez que se recibe una petición.
+Para más detalles, [ver este issue](https://github.com/LeeKamentsky/python-javabridge/issues/88).
+
+
 Integrantes:
 ------------
    * Leslie Rodrigues    10-10613
