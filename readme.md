@@ -30,7 +30,7 @@ Instrucciones
 
 Para correr la aplicación en Cloud9, se usa la siguiente orden en el directorio *Interfaz*:
 
-`python manage.py runserver 0.0.0.0:8080`
+`. shell_script.sh`
 
 luego se va a la siguiente dirección con el navegador: 
 
@@ -53,6 +53,24 @@ Los issues relacionados con el Javabridge de python afectan la librería que se 
 funciones de Weka. Esto impide que se use de manera correcta con Django cada vez que se recibe una petición.
 Para más detalles, [ver este issue](https://github.com/LeeKamentsky/python-javabridge/issues/88).
 
+Esta es la razón por la cual se debe usar el script de bash comentado arriba para correr la aplicación. Hasta que no
+sea arreglado este problema, no se puede correr Django de manera normal, pues por cada request se dañaría el
+JVM usado para llamar a Weka desde Python.
+
+Información Adicional
+----------------------
+
+Ver el README.txt del directorio 'datasets' para información adicional sobre los conjuntos de datos.
+
+Los mejores modelos generados con Weka se han puesto en el directorio '/Interfaz/tweets/modelos'. Aquí se
+encuentran cuatro modelos que son productos del conjunto de datos etiquetamiento automáticamente y 
+uno (el de Naive Bayes) que surge del conjunto de datos etiquetado manualmente. Ambos con todos los atributos
+adicionales.
+
+Los resultados se guardan en el directorio Resultados. Allí están archivos TXT con los resultados arrojados por
+Weka. Cada nombre de archivo trata de indicar el dataset de origen. Lo demás que sea relevante es indicado 
+por Weka en esos archivos. También se pueden encontrar los archivos MODEL con los modelos generados por
+Weka. Generalmente se trata de que su nombre corresponda a su archivo TXT de resultados.
 
 Integrantes:
 ------------
