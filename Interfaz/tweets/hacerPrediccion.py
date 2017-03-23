@@ -1,3 +1,6 @@
+import os
+import signal
+import subprocess
 import weka.core.jvm as jvm
 import sys
 import traceback
@@ -105,17 +108,21 @@ def detectarSpam(tuitsConDatos,modeloFilename):
     #                           index, actual, predicted, error y distribution
     #
     """
+    bashCommand = "python manage.py runserver;"
     predicciones = []
     try:
         jvm.start()
         jvm.start(system_cp=True, packages=True)
         predicciones = detectarSpam_(tuitsConDatos,modeloFilename)
-        return predicciones
+
     except Exception, e:
-        print("RESTART")
         print(traceback.format_exc())
+        os.kill(os.getpid(), signal.SIGKILL)
+        process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+        output, error = process.communicate()
     finally:
         jvm.stop()
+        return predicciones
 
 
 def construirFeature(tweetText, tweet_id,favorite_count,retweet_count) :
@@ -189,8 +196,6 @@ def predictWithWeka(csvFilenameWithInputToPredict,modelFilename):
         result["distribution"] = str(dist.tolist())
 
         results.append(result)
-        print result
-
     return results
 
 def main() :

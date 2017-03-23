@@ -29,7 +29,7 @@ def get_tweets_for_account(request):
 		stuff = api.user_timeline(screen_name = account, count = 10, include_rts = True)
 	except tweepy.TweepError as e:
 	    return HttpResponse(json.dumps([]))
-	
+
 	listaTuitsConDatos = []
 	for tweet in stuff :
 		tuitsConDatos = dict()
@@ -38,25 +38,25 @@ def get_tweets_for_account(request):
 		tuitsConDatos["favorite_count"] = "1.0" if tweet.favorited else "0.0"
 		tuitsConDatos["retweet_count"] = tweet.retweet_count
 		listaTuitsConDatos.append(tuitsConDatos)
-	
+
 	#modeloFilename = "tweets/modelos/naivebayes.model"
 	modeloFilename = "tweets/modelos/usado_en_interfaz_knn.model"
-	
+
 	predicciones = detectarSpam(listaTuitsConDatos,modeloFilename)
-	
+
 	odd=True
 	data=[]
 	for indx,tweet in enumerate(stuff):
 		if indx >= len(predicciones) :
 			break
-		
+
 		distribucion = ast.literal_eval(predicciones[indx]["distribution"])
 		probabilidad = distribucion[0] if predicciones[indx]["predicted"] == "y" \
 							else distribucion[1]
-		
+
 		data.append({'text':tweet.text,
 					 'probabilidad':probabilidad,
 					 'spam':predicciones[indx]["predicted"] == "y"})
-		
+
 
 	return HttpResponse(json.dumps(data))

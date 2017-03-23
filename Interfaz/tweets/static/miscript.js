@@ -49,15 +49,16 @@ jQuery(document).ready(function() {
   		var table = $('#tweets-table').DataTable();
 
  		for(var i in tweets){
- 			var color="green";
+			console.log(tweets[i])
+ 			var color="#26A65B";
 			var rowNode = table
 			    .row.add([tweets[i]["text"], tweets[i]["probabilidad"]])
 			    .draw()
 			    .node();
-
+			console.log(tweets[i]);
 			if (tweets[i]["spam"]){
-				color="red";
-			} 
+				color="#EC644B";
+			}
 
 			$(rowNode).css({'background-color': color,color: 'white'}).animate({color: 'blue'});
 		}
@@ -70,7 +71,7 @@ jQuery(document).ready(function() {
 	  	var twitterAccount=$("#twitter-account").val();
 	  	if (twitterAccount){
 
-	  		$('#submit-account').prop('disabled', true);
+	  		//$('#submit-account').prop('disabled', true);
 
 	  		// Clean table
 	  		var table = $('#tweets-table').DataTable();
@@ -80,4 +81,4 @@ jQuery(document).ready(function() {
 	  	}
 	});
 
-});  
+});

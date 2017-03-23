@@ -1,3 +1,24 @@
+#titulo{
+	font-family: 'Fredoka One', cursive;
+}
+
+#subtitulo, #title-form, #subtitulo_table, table, #tweets-table_wrapper{
+	font-family: 'Hind Siliguri', sans-serif;
+}
+
+#title-form{
+	font-size: 16px;
+}
+
+#subtitulo_table{
+	text-align: center;
+	font-size: 16px;
+}
+
+#tweets-table_info{
+	text-align: center;
+}
+
 .select2-container{
 	width: 100% !important;
 }
