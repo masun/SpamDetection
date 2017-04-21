@@ -1,0 +1,54 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     featureVectorsEntrenamientoWithTopicRetuitFav-weka.filters.unsupervised.attribute.Remove-R1-weka.filters.unsupervised.attribute.NumericToNominal-R8,11-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-weka.filters.unsupervised.attribute.AddCluster-Wweka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -N 2 -A "weka.core.EuclideanDistance -R first-last" -I 500 -num-slots 1 -S 10-I11-weka.filters.unsupervised.attribute.Remove-R11-weka.filters.unsupervised.attribute.RenameAttribute-findcluster-replacespam-Rlast-weka.filters.unsupervised.attribute.RenameNominalValues-R11-Ncluster1:y,cluster2:n
+Instances:    700
+Attributes:   11
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              topic_id
+              favorite_count
+              retweet_count
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 0.31 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         699               99.8571 %
+Incorrectly Classified Instances         1                0.1429 %
+Kappa statistic                          0.9969
+Mean absolute error                      0.0458
+Root mean squared error                  0.0812
+Relative absolute error                  9.8959 %
+Root relative squared error             16.8756 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1,000    0,002    0,996      1,000    0,998      0,997    1,000     1,000     y
+                 0,998    0,000    1,000      0,998    0,999      0,997    1,000     1,000     n
+Weighted Avg.    0,999    0,001    0,999      0,999    0,999      0,997    1,000     1,000     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 255   0 |   a = y
+   1 444 |   b = n
+

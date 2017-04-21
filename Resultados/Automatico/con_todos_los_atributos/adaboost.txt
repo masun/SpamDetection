@@ -1,0 +1,283 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     featureVectorsEntrenamientoWithTopicRetuitFav-weka.filters.unsupervised.attribute.Remove-R1-weka.filters.unsupervised.attribute.NumericToNominal-R8,11-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-weka.filters.unsupervised.attribute.AddCluster-Wweka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -N 2 -A "weka.core.EuclideanDistance -R first-last" -I 500 -num-slots 1 -S 10-I11-weka.filters.unsupervised.attribute.Remove-R11-weka.filters.unsupervised.attribute.RenameAttribute-findcluster-replacespam-Rlast-weka.filters.unsupervised.attribute.RenameNominalValues-R11-Ncluster1:y,cluster2:n
+Instances:    700
+Attributes:   11
+              hashtags
+              mentions
+              uppercase
+              nonalpha
+              urls
+              len
+              numbers
+              topic_id
+              favorite_count
+              retweet_count
+              spam
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+numbers <= 0.1666665 : n
+numbers > 0.1666665 : y
+numbers is missing : n
+
+Class distributions
+
+numbers <= 0.1666665
+y	n	
+0.11554621848739496	0.884453781512605	
+numbers > 0.1666665
+y	n	
+0.8928571428571429	0.10714285714285714	
+numbers is missing
+y	n	
+0.36428571428571427	0.6357142857142857	
+
+
+Weight: 2.06
+
+Decision Stump
+
+Classifications
+
+topic_id = 7 : y
+topic_id != 7 : n
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 7
+y	n	
+1.0	0.0	
+topic_id != 7
+y	n	
+0.19427529443254812	0.8057247055674519	
+topic_id is missing
+y	n	
+0.5091318616359893	0.4908681383640106	
+
+
+Weight: 2.01
+
+Decision Stump
+
+Classifications
+
+topic_id = 1 : n
+topic_id != 1 : y
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 1
+y	n	
+0.0	1.0	
+topic_id != 1
+y	n	
+0.8242956839804845	0.17570431601951556	
+topic_id is missing
+y	n	
+0.7216172475579464	0.2783827524420535	
+
+
+Weight: 1.7
+
+Decision Stump
+
+Classifications
+
+numbers <= 0.1666665 : n
+numbers > 0.1666665 : y
+numbers is missing : n
+
+Class distributions
+
+numbers <= 0.1666665
+y	n	
+0.18521756838956566	0.8147824316104343	
+numbers > 0.1666665
+y	n	
+0.8367096304856051	0.16329036951439502	
+numbers is missing
+y	n	
+0.42639585240235184	0.5736041475976482	
+
+
+Weight: 1.54
+
+Decision Stump
+
+Classifications
+
+topic_id = 7 : y
+topic_id != 7 : n
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 7
+y	n	
+1.0	0.0	
+topic_id != 7
+y	n	
+0.27118010245225704	0.7288198975477429	
+topic_id is missing
+y	n	
+0.5175397373962665	0.48246026260373365	
+
+
+Weight: 1.52
+
+Decision Stump
+
+Classifications
+
+topic_id = 1 : n
+topic_id != 1 : y
+topic_id is missing : y
+
+Class distributions
+
+topic_id = 1
+y	n	
+0.0	1.0	
+topic_id != 1
+y	n	
+0.7784822712355421	0.22151772876445777	
+topic_id is missing
+y	n	
+0.7059910449553674	0.29400895504463265	
+
+
+Weight: 1.38
+
+Decision Stump
+
+Classifications
+
+numbers <= 0.1666665 : n
+numbers > 0.1666665 : y
+numbers is missing : n
+
+Class distributions
+
+numbers <= 0.1666665
+y	n	
+0.2160006662281804	0.7839993337718196	
+numbers > 0.1666665
+y	n	
+0.755215782477588	0.24478421752241195	
+numbers is missing
+y	n	
+0.44173599706111344	0.5582640029388866	
+
+
+Weight: 1.22
+
+Decision Stump
+
+Classifications
+
+topic_id = 7 : y
+topic_id != 7 : n
+topic_id is missing : n
+
+Class distributions
+
+topic_id = 7
+y	n	
+1.0	0.0	
+topic_id != 7
+y	n	
+0.2804515174712299	0.7195484825287701	
+topic_id is missing
+y	n	
+0.4801033760059877	0.5198966239940124	
+
+
+Weight: 1.37
+
+Decision Stump
+
+Classifications
+
+retweet_count <= 0.1952065 : y
+retweet_count > 0.1952065 : n
+retweet_count is missing : y
+
+Class distributions
+
+retweet_count <= 0.1952065
+y	n	
+0.7325200022432756	0.2674799977567243	
+retweet_count > 0.1952065
+y	n	
+9.68676228514709E-16	0.999999999999999	
+retweet_count is missing
+y	n	
+0.6739907659084585	0.32600923409154153	
+
+
+Weight: 1.12
+
+Decision Stump
+
+Classifications
+
+topic_id = 7 : y
+topic_id != 7 : n
+topic_id is missing : n
+
+Class distributions
+
+topic_id = 7
+y	n	
+1.0	0.0	
+topic_id != 7
+y	n	
+0.374870709667481	0.6251292903325191	
+topic_id is missing
+y	n	
+0.4470075191420237	0.5529924808579763	
+
+
+Weight: 0.7
+
+Number of performed Iterations: 10
+
+
+Time taken to build model: 0.08 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         699               99.8571 %
+Incorrectly Classified Instances         1                0.1429 %
+Kappa statistic                          0.9969
+Mean absolute error                      0.0122
+Root mean squared error                  0.0462
+Relative absolute error                  2.6249 %
+Root relative squared error              9.6084 %
+Total Number of Instances              700     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1,000    0,002    0,996      1,000    0,998      0,997    0,998     0,994     y
+                 0,998    0,000    1,000      0,998    0,999      0,997    0,998     0,999     n
+Weighted Avg.    0,999    0,001    0,999      0,999    0,999      0,997    0,998     0,997     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 255   0 |   a = y
+   1 444 |   b = n
+
